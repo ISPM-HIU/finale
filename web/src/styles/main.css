@@ -24,10 +24,25 @@
 
 /* Hero */
 .home-banner-area {
-  background: url("../images/home-banner-bg.png") no-repeat;
+  background: url("../images/home-banner-bg1.png") no-repeat;
+  /* background: url("../images/9c896f637a195e8f7e29dbb8e1fb2106.svg") no-repeat; */
+  
   background-size: cover;
   background-position: center center;
   max-height: 1200px;
+}
+.mtop{
+  margin-top: -8em;
+}
+h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+}
+.home-banner-left h1 {
+  color: #222;
+  font-size: 50px;
+  line-height: 1em;
+  margin-bottom: 20px;
 }
 /* ENdhero */
 
@@ -176,7 +191,7 @@
 .video-area {
   padding-top: 90px;
   height: 100vh;
-  background: url("../images/video-area-bg.png") no-repeat center;
+  background: url("../images/video-area-bg2.png") no-repeat center;
 }
 
 /* nedVideoArea */
@@ -201,3 +216,108 @@
   color: #828bb2;
 }
 /* endFooter */
+
+
+
+
+
+h1 {
+	position: relative;
+	text-transform: uppercase;
+	font-size: 50px;
+	letter-spacing: 2px;
+	margin-bottom: 20px;
+	color: red;
+	justify-content: center;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+span {
+	display: inline-block; 
+	position: relative; 
+}
+.bouncingAnim span.ml_25 {margin-left: 25px;}
+.bouncingAnim span:nth-child(1) {animation: bounce 2.3s ease-in-out infinite; }
+.bouncingAnim span:nth-child(2) {animation: bounce 2.3s ease-in-out .33s infinite; }
+.bouncingAnim span:nth-child(3) {animation: bounce 2.3s ease-in-out 0.66s infinite; }
+.bouncingAnim span:nth-child(4) {animation: bounce 2.3s ease-in-out 0.99s infinite; }
+.bouncingAnim span:nth-child(5) {animation: bounce 2.3s ease-in-out 1.33s infinite; }
+.bouncingAnim span:nth-child(6) {animation: bounce 2.3s ease-in-out 1.66s infinite; }
+.bouncingAnim span:nth-child(7) {animation: bounce 2.3s ease-in-out 1.99s infinite; }
+.bouncingAnim span:nth-child(8) {animation: bounce 2.3s ease-in-out 2.33s infinite; }
+.bouncingAnim span:nth-child(9) {animation: bounce 2.3s ease-in-out 2.66s infinite; }
+.bouncingAnim span:nth-child(10) {animation: bounce 2.3s ease-in-out 2.99s infinite; }
+
+@-webkit-keyframes bounce{
+  0%, 75%, 100%{
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  25%{
+    -webkit-transform: translateY(-7px);
+    -ms-transform: translateY(-7px);
+    -o-transform: translateY(-7px);
+    transform: translateY(-7px);
+    opacity: .5;
+  }
+}
+@keyframes bounce{
+  0%, 75%, 100%{
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  25%{
+    -webkit-transform: translateY(-7px);
+    -ms-transform: translateY(-7px);
+    -o-transform: translateY(-7px);
+    transform: translateY(-7px);
+    opacity: .5;
+  }
+}
+
+.cl-span{
+  color: yellow;
+}
+
+
+
+.mb-5{
+  margin-bottom: 10rem!important;
+}
+
+img {
+  width: 400px; /* Ajustez la taille de votre image selon vos besoins */
+  animation: zoom-in-out 5s ease-in-out infinite; /* Durée de l'animation: 5 secondes */
+}
+.border-left-top {
+  border-right: 2px solid #fff;
+  border-top: 2px solid #fff;
+}
+
+@keyframes zoom-in-out {
+  0% {
+      transform: scale(1); /* Zoom initial */
+  }
+  50% {
+      transform: scale(1.2); /* Zoom à 120% à mi-chemin de l'animation */
+  }
+  100% {
+      transform: scale(1); /* Retour au zoom initial à la fin de l'animation */
+  }
+}
+h4{
+  font-size: 1.5rem;
+    color: #1b0452;
+    font-weight: 900;
+}

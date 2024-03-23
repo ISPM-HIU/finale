@@ -1,14 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import {logo} from "./images/logo.jpeg"
 
 const Header = () => {
   return (
     <header class="default-header">
       <nav className="navbar navbar-expand-lg  navbar-dark">
         <div className="container">
-          <Link className="navbar-brand" to="index.html">
-            {/* <img src="img/logo.png" alt="" /> */}
-            HELLO-Dev
+          <Link className="navbar-brand" >
+          <span className="cl-span">
+            <strong>
+            Smart 
+            </strong>
+          </span>
+            
+            <span>Home</span>  
           </Link>
           <button
             className="navbar-toggler"
@@ -27,20 +33,20 @@ const Header = () => {
           >
             <ul className="navbar-nav">
               <li>
-                <Link to="index.html">Home</Link>
+                <Link to="index.html">Accueil</Link>
               </li>
               <li>
-                <Link to="about.html">About</Link>
+                <Link to="about.html">Contrôle à distance</Link>
               </li>
               <li>
-                <Link to="courses.html">Courses</Link>
+                <Link to="courses.html">Personnalisation</Link>
               </li>
               <li>
-                <Link to="courses.html">Elements</Link>
+                <Link to="courses.html">Exploration 3D</Link>
               </li>
-              <li>
-                <Link to="courses.html">Blog</Link>
-              </li>
+              {/* <li>
+                <Link to="courses.html">Commandes gestuelles</Link>
+              </li> */}
               {/* <li className="dropdown">
                 <Link className="dropdown-toggle" to="#" data-toggle="dropdown">
                   Pages
@@ -68,9 +74,9 @@ const Header = () => {
                 </div>
               </li> */}
 
-              <li>
-                <Link to="contacts.html">Contacts</Link>
-              </li>
+              {/* <li>
+                <Link to="contacts.html">Commandes vocales</Link>
+              </li> */}
               {/* <li>
                 <button className="search">
                   <span className="lnr lnr-magnifier" id="search"></span>

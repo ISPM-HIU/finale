@@ -5,38 +5,26 @@ const FeatureSection = () => {
     <section className="feature-area">
       <div className="container-fluid">
         <div className="feature-inner row">
-          <div className="col-lg-2 col-md-6">
+          <div className="col-lg-3 col-md-6">
             <div className="feature-item d-flex">
-              <i className="ti-book"></i>
+              {/* <i className="ti-book"></i> */}
+              <i class="ti-hand-stop"></i>
               <div className="ml-20">
-                <h4>New Clases</h4>
+                <h4>Commandes gestuelles</h4>
                 <p>
-                  In the history of modern astronomy, there is probably no one
-                  greater leap forward.
+                Contrôlez sans effort votre maison intelligente avec des gestes simples.
                 </p>
               </div>
             </div>
           </div>
-          <div className="col-lg-2 col-md-6">
+          <div className="col-lg-3 col-md-6">
             <div className="feature-item d-flex">
-              <i className="ti-cup"></i>
+              {/* <i className="ti-cup"></i> */}
+              <i class="ti-microphone"></i>
               <div className="ml-20">
-                <h4>Top Courses</h4>
+                <h4>Commandes <br/> vocales</h4>
                 <p>
-                  In the history of modern astronomy, there is probably no one
-                  greater leap forward.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-2 col-md-6">
-            <div className="feature-item d-flex border-right-0">
-              <i className="ti-desktop"></i>
-              <div className="ml-20">
-                <h4>Full E-Books</h4>
-                <p>
-                  In the history of modern astronomy, there is probably no one
-                  greater leap forward.
+                  Contrôlez votre maison d'une simple commande vocale.
                 </p>
               </div>
             </div>
