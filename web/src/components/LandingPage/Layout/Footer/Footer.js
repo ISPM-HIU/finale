@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="footer-area section-gap">
-      {/* <div className="container">
+      <div className="container">
         <div className="row">
           <div className="col-lg-3 col-md-6 single-footer-widget">
             <h4>Contactez-nous</h4>
@@ -76,19 +76,16 @@ const Footer = () => {
             </a>
           </div>
         </div>
-      </div> */}
-      <div class="container my-5">
+      </div>
+      {/* <div class="container my-5">
 
         <footer class="text-center text-lg-start" >
           <div class="container d-flex justify-content-center py-1">
             <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" >
-              {/* <i class="fab fa-facebook-f"></i> */}
               <i class="ti-facebook"></i>
 
             </button>
             <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" >
-              {/* <i class="fab fa-youtube"></i> */}
-              {/* <i class="ti-whatsapp"></i> */}
 
 
             <span className="watsap">
@@ -96,7 +93,6 @@ const Footer = () => {
             </span>
             </button>
             <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" >
-              {/* <i class="fab fa-instagram"></i> */}
               <i class="ti-google"></i>
 
             </button>
@@ -108,7 +104,7 @@ const Footer = () => {
           </div>
         </footer>
         
-      </div>
+      </div> */}
     </footer>
   );
 };
