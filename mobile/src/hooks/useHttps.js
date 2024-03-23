@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const url = "https://intent-wallaby-poorly.ngrok-free.app/api"; 
+export const url = "http://173.249.22.169:9005/api"; 
 
-// cr: "https://intent-wallaby-poorly.ngrok-free.app/api"
-// ando: "http://197.215.193.31:9000/api"
+// dev: "https://intent-wallaby-poorly.ngrok-free.app/api"
+// prod: "http://173.249.22.169:9005/api"
 
 const useHttps = () => {
 
