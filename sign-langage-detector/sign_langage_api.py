@@ -21,6 +21,11 @@ if not os.path.exists(DATA_DIR):
 
 labels_dict = {}
 
+@app.route('/get-last-model', methods=['GET'])
+def getLastModel():
+    last_key, last_value = labels_dict.popitem()
+    return last_key+1
+
 @app.route('/create-model', methods=['POST'])
 def createModel():
     if 'img' not in request.files:
@@ -158,4 +163,4 @@ def inference_classifier():
         return "None attributed"
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0" ,debug=True, port=5000)
