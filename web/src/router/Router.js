@@ -13,7 +13,12 @@ export default function Router() {
         <Route
           path="/"
           element={
-              <LandingPage />
+            <LandingPage />
+          }
+        ></Route>
+        <Route path="/webcam"
+          element={
+              <WebcamControl/>
           }
         ></Route>
         <Route
