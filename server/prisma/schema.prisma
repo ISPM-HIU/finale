@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  u_id          Int       @id @default(autoincrement())
+  u_createdAt   DateTime  @default(now())
+  u_name        String    @db.VarChar(255)
+  u_last_name   String?   @db.VarChar(255)
+  u_email       String    @unique
+  u_password    String? 
+  commands      Commands[]
+  houses        House[]
+}
+
+model Commands {
+  id                Int       @id @default(autoincrement())
+  command_text      String?   @db.VarChar(255)
+  command_message   String    @db.VarChar(255)
+  createdAt         DateTime  @default(now())
+  user              Users     @relation(fields: [userId], references: [u_id])
+  userId            Int
+}
+
+model House {
+  id_house          Int       @id @default(autoincrement())
+  led1               Boolean   @default(false)
+  led2               Boolean   @default(false)
+  led3               Boolean   @default(false)
+  porte1             Boolean   @default(false)
+  porte2             Boolean   @default(false)
+  fenetre1           Boolean   @default(false)
+  fenetre2           Boolean   @default(false)
+  securite          Boolean   @default(false)
+  user             Users     @relation(fields: [userId], references: [u_id])
+  userId           Int
+}

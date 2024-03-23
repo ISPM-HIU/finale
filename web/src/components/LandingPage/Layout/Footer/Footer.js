@@ -3,26 +3,21 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="footer-area section-gap">
-      <div className="container">
+      {/* <div className="container">
         <div className="row">
-          <div className="col-lg-2 col-md-6 single-footer-widget">
-            <h4>Top Products</h4>
+          <div className="col-lg-3 col-md-6 single-footer-widget">
+            <h4>Contactez-nous</h4>
             <ul>
               <li>
-                <a href="#">Managed Website</a>
+                <a href="#">jarvis@gmail.com</a>
               </li>
+
               <li>
-                <a href="#">Manage Reputation</a>
-              </li>
-              <li>
-                <a href="#">Power Tools</a>
-              </li>
-              <li>
-                <a href="#">Marketing Service</a>
+                <a href="#"> +1234567890</a>
               </li>
             </ul>
           </div>
-          <div className="col-lg-2 col-md-6 single-footer-widget">
+          <div className="col-lg-3 col-md-6 single-footer-widget">
             <h4>Quick Links</h4>
             <ul>
               <li>
@@ -31,15 +26,9 @@ const Footer = () => {
               <li>
                 <a href="#">Brand Assets</a>
               </li>
-              <li>
-                <a href="#">Investor Relations</a>
-              </li>
-              <li>
-                <a href="#">Terms of Service</a>
-              </li>
             </ul>
           </div>
-          <div className="col-lg-2 col-md-6 single-footer-widget">
+          <div className="col-lg-3 col-md-6 single-footer-widget">
             <h4>Features</h4>
             <ul>
               <li>
@@ -48,15 +37,9 @@ const Footer = () => {
               <li>
                 <a href="#">Brand Assets</a>
               </li>
-              <li>
-                <a href="#">Investor Relations</a>
-              </li>
-              <li>
-                <a href="#">Terms of Service</a>
-              </li>
             </ul>
           </div>
-          <div className="col-lg-2 col-md-6 single-footer-widget">
+          <div className="col-lg-3 col-md-6 single-footer-widget">
             <h4>Resources</h4>
             <ul>
               <li>
@@ -65,48 +48,7 @@ const Footer = () => {
               <li>
                 <a href="#">Research</a>
               </li>
-              <li>
-                <a href="#">Experts</a>
-              </li>
-              <li>
-                <a href="#">Agencies</a>
-              </li>
             </ul>
-          </div>
-          <div className="col-lg-4 col-md-6 single-footer-widget">
-            <h4>Newsletter</h4>
-            <p>You can trust us. we only send promo offers,</p>
-            <div className="form-wrap" id="mc_embed_signup">
-              <form
-                target="_blank"
-                action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                method="get"
-                className="form-inline"
-                novalidate="true"
-              >
-                <input
-                  className="form-control"
-                  name="EMAIL"
-                  placeholder="Your Email Address"
-                  onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Your Email Address '"
-                  required=""
-                  type="email"
-                />
-                <button className="click-btn btn btn-default text-uppercase">
-                  subscribe
-                </button>
-                <div style={{position: "absolute", left: "-5000px"}}>
-                  <input
-                    name="b_36c4fd991d266f23781ded980_aefe40901a"
-                    tabindex="-1"
-                    value=""
-                    type="text"
-                  />
-                </div>
-                <div className="info"></div>
-              </form>
-            </div>
           </div>
         </div>
         <div className="footer-bottom row align-items-center">
@@ -134,6 +76,38 @@ const Footer = () => {
             </a>
           </div>
         </div>
+      </div> */}
+      <div class="container my-5">
+
+        <footer class="text-center text-lg-start" >
+          <div class="container d-flex justify-content-center py-1">
+            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" >
+              {/* <i class="fab fa-facebook-f"></i> */}
+              <i class="ti-facebook"></i>
+
+            </button>
+            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" >
+              {/* <i class="fab fa-youtube"></i> */}
+              {/* <i class="ti-whatsapp"></i> */}
+
+
+            <span className="watsap">
+
+            </span>
+            </button>
+            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" >
+              {/* <i class="fab fa-instagram"></i> */}
+              <i class="ti-google"></i>
+
+            </button>
+          </div>
+
+          <div class="text-center text-white p-3" >
+            © 2024 Copyright 
+            <a class="text-white">javis@gmail.com</a>
+          </div>
+        </footer>
+        
       </div>
     </footer>
   );

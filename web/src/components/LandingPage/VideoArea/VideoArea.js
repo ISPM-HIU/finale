@@ -9,13 +9,22 @@ const VideoArea = () => {
           <div className="col-lg-5">
             <div className="section-title text-white">
               <h2 className="text-white">
-                Watch Our Trainers <br />
-                in Live Action
+              Confort et Sécurité 
               </h2>
               <p>
-                In the history of modern astronomy, there is probably no one
-                greater leap forward than the building and launch of the space
-                telescope known as the Hubble.
+                Contrôle à Distance et Sécurité Accrue
+              </p>
+              <p>
+                Personnalisation et Confort Sur Mesure
+              </p>
+              <p>
+                Intégration Mobile et Flexibilité
+              </p>
+              <p>
+                Gestion Simplifiée et Confort Moderne
+              </p>
+              <p>
+                Interactivité Intuitive et Utilisation Conviviale
               </p>
             </div>
           </div>
@@ -35,12 +44,15 @@ const VideoArea = () => {
                         <div className="overlay"></div>
                       </div>
                       <h4 className="text-white mb-20 mt-30">
-                        Learn Angular js Course for Legendary Persons
+                      Sécurité et Innovation
                       </h4>
                       <p className="text-white mb-20">
-                        In the history of modern astronomy, there is probably no
-                        one greater leap forward than the building and launch of
-                        the space telescope known as the Hubble.
+
+                      Accessibilité Universelle et Inclusivité <br/>
+                      Sécurité Améliorée et Tranquillité d'Esprit<br/>
+                      Exploration Immersive et Visualisation Détaillée<br/>
+                      Efficacité Énergétique et Économies<br/>
+                      Innovation Technologique et Modernisation du Mode de Vie<br/>
                       </p>
                     </div>
                   </div>

@@ -1,0 +1,18 @@
+version: "3.1"
+services:
+  postgres:
+    image: postgres:14.1
+    environment:
+      POSTGRES_USER: hiu_finale
+      POSTGRES_PASSWORD: hiuFinale2k24
+      POSTGRES_DB: hiu-finale-db
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4:6
+    environment:
+      PGADMIN_DEFAULT_EMAIL: hiuFinale@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: hiuFinale2k24
+    ports:
+      - "93:80"
