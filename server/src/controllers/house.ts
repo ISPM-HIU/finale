@@ -1,6 +1,7 @@
 import { Response, Request } from "express"
 import model from "../models/house"
 import { getCommandPrompt } from "../services/getCommandPrompt"
+import { globalSocket } from "../services/socketService"
 
 const controller = {
     update:async(req: Request, res: Response)=>{
@@ -9,7 +10,7 @@ const controller = {
         } = req.body
         let command_message = getCommandPrompt(command_text)
         console.log("commande",command_message);
-        
+
         switch (command_message){
             case 'allumer led1':
                 try {
@@ -17,8 +18,10 @@ const controller = {
                         "led1",
                         true
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -31,8 +34,10 @@ const controller = {
                         "led1",
                         false
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -45,8 +50,10 @@ const controller = {
                         "led2",
                         true
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -59,8 +66,10 @@ const controller = {
                         "led2",
                         false
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -73,8 +82,10 @@ const controller = {
                         "fenetre1",
                         true
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -87,8 +98,10 @@ const controller = {
                         "fenetre1",
                         false
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -101,8 +114,10 @@ const controller = {
                         "fenetre2",
                         true
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -115,8 +130,10 @@ const controller = {
                         "fenetre2",
                         false
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -129,8 +146,10 @@ const controller = {
                         "porte1",
                         true
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -143,8 +162,10 @@ const controller = {
                         "porte1",
                         false
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -157,8 +178,10 @@ const controller = {
                         "porte2",
                         true
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -171,8 +194,10 @@ const controller = {
                         "porte2",
                         false
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -185,8 +210,10 @@ const controller = {
                         "securite",
                         true
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
@@ -199,8 +226,10 @@ const controller = {
                         "securite",
                         false
                     )
-                    if(house)
+                    if(house) {
                         res.status(200).send(house)
+                        globalSocket.emit("update-materials", house)
+                    }
                 }
                 catch (error: any) {
                     console.log(error)
