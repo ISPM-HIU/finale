@@ -190,16 +190,23 @@ h1 {
 /* Video Area */
 .video-area {
   padding-top: 90px;
-  height: 100vh;
-  background: url("../images/video-area-bg2.png") no-repeat center;
+  /* height: 100vh; */
+  height: 48em;
+  background: url("../images/video-area-bg.png") no-repeat center;
 }
 
 /* nedVideoArea */
 
 /* Footer */
 .footer-area {
-  padding: 430px 0px 120px;
-  background: url("../images/footer-bg.png") no-repeat center;
+  /* padding: 430px 0px 120px; */
+  padding: 30px 0px 0px;
+  /* background: url("../images/footer-bg.png") no-repeat center; */
+  background-color: black;
+}
+
+.watsap{
+  background: url("../images/watsap.jpeg") no-repeat center;
 }
 .footer-area .single-footer-widget h4 {
   color: #fff;
@@ -298,11 +305,11 @@ span {
 
 img {
   width: 400px; /* Ajustez la taille de votre image selon vos besoins */
-  animation: zoom-in-out 5s ease-in-out infinite; /* Durée de l'animation: 5 secondes */
+  animation: zoom-in-out 5s ease-in-out infinite;
 }
 .border-left-top {
-  border-right: 2px solid #fff;
-  border-top: 2px solid #fff;
+  /* border-right: 2px solid #fff; */
+  /* border-top: 2px solid #fff; */
 }
 
 @keyframes zoom-in-out {

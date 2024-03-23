@@ -17,7 +17,9 @@ const OtherFeature = () => {
           </div>
           <div className="col-lg-4 col-md-6">
             <div className="other-feature-item">
-              <i className="ti-key"></i>
+              {/* <i className="ti-key"></i> */}
+              <i class="ti-control-play"></i>
+
               <h4>Contrôle à distance de votre maison</h4>
               <div>
                 <p>
@@ -28,7 +30,8 @@ const OtherFeature = () => {
           </div>
           <div className="col-lg-4 col-md-6 mt--160">
             <div className="other-feature-item">
-              <i className="ti-files"></i>
+              {/* <i className="ti-files"></i> */}
+              <i class="ti-settings"></i>
               <h4>Personnalisation des commandes gestuelles</h4>
               <div>
                 <p>
@@ -39,7 +42,8 @@ const OtherFeature = () => {
           </div>
           <div className="col-lg-4 col-md-6 mt--260">
             <div className="other-feature-item">
-              <i className="ti-medall-alt"></i>
+              {/* <i className="ti-medall-alt"></i> */}
+              <i class="ti-microphone"></i>
               <h4>Commandes vocales intelligentes</h4>
               <div>
                 <p>
@@ -50,7 +54,8 @@ const OtherFeature = () => {
           </div>
           <div className="col-lg-4 col-md-6">
             <div className="other-feature-item">
-              <i className="ti-briefcase"></i>
+              {/* <i className="ti-briefcase"></i> */}
+              <i class="ti-shield"></i>
               <h4>Sécurité avancée</h4>
               <div>
                 <p>
@@ -61,7 +66,9 @@ const OtherFeature = () => {
           </div>
           <div className="col-lg-4 col-md-6 mt--160">
             <div className="other-feature-item">
-              <i className="ti-crown"></i>
+              <i class="ti-layout"></i>
+
+              {/* <i className="ti-crown"></i> */}
               <h4>Visualisation 3D</h4>
               <div>
                 <p>
@@ -73,7 +80,8 @@ const OtherFeature = () => {
           <div className="col-lg-4 col-md-6 mt--260"
               >
             <div className="other-feature-item">
-              <i className="ti-headphone-alt"></i>
+              {/* <i className="ti-headphone-alt"></i> */}
+              <i class="ti-headphone-alt"></i>
               <h4>Live Supports</h4>
               <div>
                 <p>
@@ -86,6 +94,8 @@ const OtherFeature = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="y-5">
       </div>
     </section>
   );
