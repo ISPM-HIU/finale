@@ -6,7 +6,7 @@ import requests
 chat = Messenger()
 
 # defining the api-endpoint 
-API_ENDPOINT = "http://localhost:9005/api/house/update"
+API_ENDPOINT = "http://173.249.22.169:9005/api/house/update"
 
 # create a get started option to get permission of user.
 # chat.get_started()
