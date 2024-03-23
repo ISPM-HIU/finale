@@ -4,8 +4,11 @@
 }
 .default-header {
   position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  /* background-color: #29104a; */
+  background-color: #111942;
   width: 100%;
   z-index: 9;
   width: 100% !important;
@@ -191,7 +194,7 @@ h1 {
 .video-area {
   padding-top: 90px;
   /* height: 100vh; */
-  height: 48em;
+  height: 35em;
   background: url("../images/video-area-bg.png") no-repeat center;
 }
 
@@ -202,7 +205,7 @@ h1 {
   /* padding: 430px 0px 120px; */
   padding: 30px 0px 0px;
   /* background: url("../images/footer-bg.png") no-repeat center; */
-  background-color: black;
+  background-color: #090707;
 }
 
 .watsap{
@@ -325,6 +328,6 @@ img {
 }
 h4{
   font-size: 1.5rem;
-    color: #1b0452;
+    color: #010f58;
     font-weight: 900;
 }

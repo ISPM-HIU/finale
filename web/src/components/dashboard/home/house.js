@@ -1,6 +1,9 @@
 import React, { useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
+import socketIO from "socket.io-client";
+import useHttps, { apiDomain } from '../../../hooks/useHttp';
+
 function Room({ position, children }) {
     return (
         <group position={position}>
@@ -155,72 +158,154 @@ function Bed({ position }) {
             ))}
         </group>
     );
-}
-
-function Lamp({ position }) {
+  }
+  
+  function Lamp({ position, data }) {
     return (
-        <mesh position={position}>
-            <sphereGeometry attach="geometry" args={[0.2, 16, 16]} />
-            <meshStandardMaterial color="white" emissive="white" emissiveIntensity={1} />
-            <pointLight distance={10} intensity={100} />
-        </mesh>
+      <mesh position={position}>
+        <sphereGeometry attach="geometry" args={[0.2, 16, 16]} />
+        <meshStandardMaterial color="white" emissive="white" emissiveIntensity={1} />
+        <pointLight distance={10} intensity={data.led1 ? 100 : 50} />
+      </mesh>
     );
-}
-function Ground() {
+  }
+
+  function Lamp2({ position, data }) {
+    return (
+      <mesh position={position}>
+        <sphereGeometry attach="geometry" args={[0.2, 16, 16]} />
+        <meshStandardMaterial color="white" emissive="white" emissiveIntensity={1} />
+        <pointLight distance={10} intensity={data.led2 ? 100 : 50} />
+      </mesh>
+    );
+  }
+  
+  function Ground() {
     return (
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.6, 0]}>
             <planeGeometry attach="geometry" args={[35, 35]} />
             <meshStandardMaterial attach="material" color="#829982" />
         </mesh>
     );
-}
-export const House = () => {
+  }
+export const House = ()=> {
     const [doorState, setDoorState] = useState({
-        door1: true,
+        door1: false,
         door2: false,
         window1: false,
         window2: false
     })
-    return (
-        <div style={{ width: '100%', height: '100vh' }}>
-            <Canvas camera={{ position: [0, 5, 15] }} style={{ backgroundColor: '#9fa19f' }}>
+    const [socket, setSocket] = useState(null);
+    const [data, setData] = useState([]);
+    const { http }= useHttps() 
+
+    const getData = async () => {
+      try {
+        let response = await http.get(`/house/${2}`)
+        if(response) {
+          setData(response.data)
+          let res = response.data
+          setDoorState({
+            door1: res.porte1,
+            door2: res.porte2,
+            window1: res.fenetre1,
+            window2: res.fenetre2
+          })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    useEffect(() => {
+      getData()
+    }, [])
+
+    useEffect(() => {
+      // Create a new Socket.IO instance
+      const newSocket = socketIO.connect(apiDomain);
+      // Set the socket state
+      setSocket(newSocket);
+      newSocket.on("connect", () => {
+        // Set the socket state to null
+        console.log("Socket connected");
+      });
+
+      // Listen for data from the server
+      newSocket.on("update-materials", (data) => {
+        // Add the message to the data state
+        console.log(data)
+        setDoorState({
+          door1: data.porte1,
+          door2: data.porte2,
+          window1: data.fenetre1,
+          window2: data.fenetre2
+        })
+        setData(data)
+      });
+
+      // Listen for when the server disconnects
+      newSocket.on("disconnect", () => {
+        // Set the socket state to null
+        setSocket(null);
+        console.log("Socket disconnected");
+      });
+
+      // Clean up the socket when the component unmounts
+      return () => {
+        newSocket.disconnect();
+      };
+    }, []);
+
+      return (
+        <div style={{width:'100%', height:'100vh'}}>
+          {
+            data ? (
+              <Canvas camera={{ position: [0, 5, 15] }} style={{backgroundColor:'#9fa19f'}}>
                 <Suspense fallback={null}>
-                    <ambientLight intensity={0.5} />
-                    <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-                    <OrbitControls />
-                    <Floor />
-                    {/* Maison avec séparation verticale */}
-                    <Room position={[0, 0, 0]}>
-                        <Ground />
-                        {/* Première chambre */}
-                        <group position={[-2.55, 0, 0]}>
-                            {
-                                !doorState.door1 ? <Door position={[0, 0, -2.5]} args={[1, 2.5, 0.1]} color={'brown'} /> : <><DoorOpen position={[0, 0, -2.9]} args={[1, 2.5, 0.1]} color={'brown'} /> </>
-                            }
-                            {
-                                !doorState.window1 ? <Window position={[0, 0, 2.5]} /> : <WindowOpen position={[0, 0, 2.9]} />
-                            }
-                            <Sofa position={[0.5, -1, 0]} />
-                            <CoffeeTable position={[-1.2, -1.2, 0]} />
-                            <Lamp position={[0, 1.2, 0]} />
-                        </group>
-                        {/* Deuxième chambre */}
-                        <group position={[2.55, 0, 0]}>
-                            {
-                                !doorState.door2 ? <Door position={[-2.6, 0, 0]} args={[0.02, 2.5, 1.5]} color={'brown'} /> : <DoorOpen position={[-3.2, 0, 0]} args={[0.02, 2.5, 1.5]} color={'brown'} />
-                            }
-                            <Door position={[-7.5, 0, 0]} args={[0.02, 1.2, 2]} color={'black'} />
-                            {
-                                !doorState.window2 ? <Window position={[0, 0, -2.5]} /> : <WindowOpen position={[0, 0, -2.9]} />
-                            }
-                            <CoffeeTable position={[1.8, -1.2, 1.8]} />
-                            <Bed position={[1, -1, 0]} />
-                            <CoffeeTable position={[1.8, -1.2, -1.8]} />
-                            <Lamp position={[0, 1.2, 0]} /> {/* Positionner l'ampoule au plafond */}
-                        </group>
-                    </Room>
+                  <ambientLight intensity={0.5} />
+                  <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+                  <OrbitControls />
+                  <Floor />
+                  {/* Maison avec séparation verticale */}
+                  <Room position={[0, 0, 0]}>
+                    <Ground />
+                    {/* Première chambre */}
+                    <group position={[-2.55, 0, 0]}>
+                      {
+                        !doorState.door1 ? <Door position={[0, 0, -2.5]} args={[1, 2.5, 0.1]} color={'brown'} /> : <><DoorOpen position={[0, 0, -2.9]} args={[1, 2.5, 0.1]} color={'brown'} /> </>
+                      }
+                      {
+                        !doorState.window1 ? <Window position={[0, 0, 2.5]} /> : <WindowOpen position={[0, 0, 2.9]} />
+                      }
+                      <Sofa position={[0.5, -1, 0]} />
+                      <CoffeeTable position={[-1.2, -1.2, 0]} />
+                      <Lamp position={[0, 1.2, 0]} data={data} />
+                    </group>
+                    {/* Deuxième chambre */}
+                    <group position={[2.55, 0, 0]}>
+                      {
+                        !doorState.door2 ? <Door position={[-2.6, 0, 0]} args={[0.02, 2.5, 1.5]} color={'brown'} /> : <DoorOpen position={[-3.2, 0, 0]} args={[0.02, 2.5, 1.5]} color={'brown'} />
+                      }
+                      <Door position={[-7.5, 0, 0]} args={[0.02, 1.2, 2]} color={'black'} />
+                      {
+                        !doorState.window2 ? <Window position={[0, 0, -2.5]} /> : <WindowOpen position={[0, 0, -2.9]} />
+                      }
+                      <CoffeeTable position={[1.8, -1.2, 1.8]} />
+                      <Bed position={[1, -1, 0]} />
+                      <CoffeeTable position={[1.8, -1.2, -1.8]} />
+                      <Lamp2 position={[0, 1.2, 0]} data={data} /> {/* Positionner l'ampoule au plafond */}
+                    </group>
+                  </Room>
                 </Suspense>
-            </Canvas>
+              </Canvas>
+            ): (
+              <div>
+                Chargement...
+              </div>
+            )
+          }
+         
         </div>
     )
 }

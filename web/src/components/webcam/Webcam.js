@@ -18,9 +18,10 @@ export function WebcamControl() {
     const [material, setMaterial] = useState("");
     const [action, setAction] = useState("")
     const [edit, setEdit] = useState(false)
+    const [lengthLabel,setLengthLabel] = useState(-1)
 
-    const frameLimit = 10;
-    const modelDataLimit = 4;
+    const frameLimit = 8;
+    const modelDataLimit = 20;
     const url_sign_hand = process.env.REACT_APP_SIGN_HAND_URL;
 
     /**
@@ -39,6 +40,16 @@ export function WebcamControl() {
             u8arr[n] = bstr.charCodeAt(n);
         }
         return new File([u8arr], filename, { type: mime });
+    }
+
+    /**
+     * Get length of the last model
+     */
+    function getLengthLabel(){
+        axios.get(url_sign_hand+"/get-last-model")
+        .then(e=>{
+            setLengthLabel(parseInt(e.data))
+        })
     }
 
     /**
@@ -89,12 +100,13 @@ export function WebcamControl() {
                         form_data = new FormData()
 
                     form_data.append('img', file)
-                    form_data.append('number_model', 0)
+                    form_data.append('number_model', lengthLabel)
                     form_data.append('model_name', nameModel)
 
                     axios.post(url_sign_hand + "/create-model", form_data)
                         .then(e => {
                             console.log(e)
+                            setLengthLabel(e=>e+1)
                         })
                         .catch(e => {
                             console.log(e)
@@ -112,7 +124,7 @@ export function WebcamControl() {
                 })
             })
 
-        }, [webcamRef, message]
+        }, [webcamRef, message, nameModel,lengthLabel]
     )
 
     // Callback used for useEffect
@@ -141,6 +153,9 @@ export function WebcamControl() {
         await initCapture(webcamRef)
     }
 
+    /**
+     * Change the state of edit
+     */
     function controlEdit() {
         setEdit(e => {
             return !e
@@ -148,11 +163,14 @@ export function WebcamControl() {
     }
 
     useEffect(() => {
+        getLengthLabel()
     }, [webcamRef])
 
 
     return (
         <>
+        <div className="w-full p-3">
+
             <div className="d-flex justify-content-center w-100">
                 <div className="webcam-comp position-relative">
 
@@ -183,11 +201,6 @@ export function WebcamControl() {
                         <div style={{
                             display: "flex"
                         }}>
-
-                            <div class="mb-2 col-md-3 me-1">
-                                <input type="text" className="form-control " id="idLabel" placeholder="Entrer le numéro du modèle"
-                                    value={idModel} onChange={(e) => { setIdModel(e.currentTarget.value) }} />
-                            </div>
                             <div class="mb-2 col-md-3 me-1">
                                 <input type="text" className="form-control" id="nameLabel" placeholder="Entrer le nom du modèle"
                                     value={nameModel} onChange={(e) => { setNameModel(e.currentTarget.value) }} />
@@ -224,6 +237,7 @@ export function WebcamControl() {
 
                     </>
             }
+        </div>
         </>
     );
 }

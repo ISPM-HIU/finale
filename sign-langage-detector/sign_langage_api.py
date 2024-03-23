@@ -23,8 +23,11 @@ labels_dict = {}
 
 @app.route('/get-last-model', methods=['GET'])
 def getLastModel():
-    last_key, last_value = labels_dict.popitem()
-    return last_key+1
+    if(len(labels_dict)==0):
+        return "{}".format(0)
+    else:
+        last_key, last_value = labels_dict.popitem()
+        return "{}".format(last_key+1)
 
 @app.route('/create-model', methods=['POST'])
 def createModel():
