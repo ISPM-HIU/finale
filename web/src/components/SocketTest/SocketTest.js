@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import socketIO from "socket.io-client";
+import { apiDomain } from "../../hooks/useHttp";
 
 const SocketTest = () => {
   const [socket, setSocket] = useState(null);
@@ -7,7 +8,7 @@ const SocketTest = () => {
 
   useEffect(() => {
     // Create a new Socket.IO instance
-    const newSocket = socketIO.connect("http://localhost:9005");
+    const newSocket = socketIO.connect(apiDomain);
     // Set the socket state
     setSocket(newSocket);
     newSocket.on("connect", () => {
