@@ -16,7 +16,7 @@ export function Menu(props) {
                     <MenuComponent name={"House"} icon={faOdnoklassniki} href={"/dashboard/assistant"}/>
                 </ul>
             </div>
-            <div className="col-md-10 position-fixed end-0 overscroll">
+            <div className="col-md-10 position-fixed end-0 overscroll p-3">
             {
                 props.children
             }
