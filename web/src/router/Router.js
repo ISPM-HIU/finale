@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "../components/LandingPage/LandingPage";
+import { WebcamControl } from "../components/webcam/Webcam";
 
 export default function Router() {
   return (
@@ -9,6 +10,11 @@ export default function Router() {
           path="/"
           element={
               <LandingPage />
+          }
+        ></Route>
+        <Route path="/webcam"
+          element={
+              <WebcamControl/>
           }
         ></Route>
       </Routes>

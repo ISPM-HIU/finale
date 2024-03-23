@@ -1,0 +1,6 @@
+.webcam-comp{
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+}
