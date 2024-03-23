@@ -4,12 +4,14 @@ import { Menu } from "../layout/Menu";
 export function Assistant() {
     return <>
         <Menu>
-            <h1>Assistant </h1>
-            <div>
-                <p>
-                    Pour faciliter l'accessibilité à l'application.
-                </p>
-                <WebcamControl />
+            <div className="w-full p-3">
+                <h2>Assistant </h2>
+                <div>
+                    <p>
+                        Pour faciliter l'accessibilité à l'application.
+                    </p>
+                    <WebcamControl />
+                </div>
             </div>
         </Menu>
     </>
