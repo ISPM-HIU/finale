@@ -71,7 +71,6 @@ export function WebcamControl() {
 
     }
 
-
     /**
      * Function to create and train the model
      */
