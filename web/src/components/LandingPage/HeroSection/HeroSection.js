@@ -37,17 +37,16 @@ const HeroSection = () => {
               <span>e</span>
                
               </h1> */}
-              <h1  className="text-white">
+              {/* <h1  className="text-white">
                 Bienvenue
               </h1>
-              <p className="d-flex text-white justify-content-center  mt-20 mb-40">dans</p>
+              <p className="d-flex text-white justify-content-center  mt-20 mb-40">dans</p> */}
 
               <h1  className="text-white">
-               SmartHome 3D
+               SmartHome 
               </h1>
-              <p className="mx-auto text-white  mt-20 mb-40 ">
-                
-              Parlez, Gesticulez, Vivez. Notre application Maison Intelligente vous permet de commander votre foyer sans même lever un doigt.
+              <p className="mx-auto text-white">
+                Maîtrisez votre demeure, où que vous soyez.
               </p>
             </div>
             <div className="offset-lg-2 col-lg-5 col-md-12 home-banner-right mtop">
