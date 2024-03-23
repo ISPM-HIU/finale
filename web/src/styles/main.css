@@ -53,8 +53,45 @@
 /* OtherFeature */
 .other-feature-area {
   padding-top: 100px;
+  background: url("../images/back5.png") no-repeat;
+  background-size: cover;
+  animation: bougerBackground 20s linear infinite;
+  /* animation: tournerBackground 10s linear infinite; */
 }
 
+@keyframes bougerBackground {
+  0% {
+    background-position: 0 0; /* Position initiale du background */
+  }
+  50% {
+    background-position: 50% 0; /* Position finale du background */
+  }
+
+  60% {
+    background-position: 60% 10%; /* Position finale du background */
+  }
+  70% {
+    background-position: 70% 25%; /* Position finale du background */
+  }
+  80% {
+    background-position: 80% 25%; /* Position finale du background */
+  }
+  90% {
+    background-position: 90% 25%; /* Position finale du background */
+  }
+
+  100% {
+    background-position: 100% 0; /* Position finale du background */
+  }
+}
+@keyframes tournerBackground {
+  from {
+    transform: rotate(0deg); /* Rotation initiale du background */
+  }
+  to {
+    transform: rotate(360deg); /* Rotation complète du background */
+  }
+}
 .section-title {
   padding-bottom: 75px;
 }
@@ -75,10 +112,10 @@
   padding: 50px 40px;
   background: #f2f3f7;
   margin-bottom: 30px;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  animation : appear 1s forwards;
+}
+.other-feature-item:hover{
+  transform: scale(1.1); 
 }
 .other-feature-item i {
   font-size: 36px;
@@ -87,6 +124,36 @@
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+
+  
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animated-text {
+  background: linear-gradient(45deg, #ff0000, #ff00ff, #0000ff, #00ffff, #00ff00, #ffff00, #ff0000); /*Dégradé de couleurs */
+  -webkit-background-clip: text !important; /* Clip le texte au dégradé de couleurs pour l'appliquer comme couleur de fond */
+  background-clip: text; 
+  color: transparent; /* Rend le texte transparent pour montrer le dégradé de couleurs */
+  animation: colorChange 5s ease infinite; /* Animation pour changer les couleurs en dégradé */
+}
+
+@keyframes colorChange {
+  0% {
+    background-position: 0% 50%; /* Position initiale du dégradé */
+  }
+  100% {
+    background-position: 100% 50%; /* Position finale du dégradé */
+  }
 }
 
 .other-feature-item h4 {
