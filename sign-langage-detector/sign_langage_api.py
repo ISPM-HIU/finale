@@ -1,6 +1,7 @@
 import os
 import mediapipe as mp
 from flask import Flask, request, jsonify
+from flask_cors import CORS,cross_origin
 import matplotlib.pyplot as plt
 import pickle
 from PIL import Image
@@ -9,13 +10,21 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import numpy as np
+
 app = Flask(__name__)
+cors = CORS(app)
+
 DATA_DIR = './data'
 INPUT_DIR = './input'
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
 labels_dict = {}
+
+@app.route('/get-last-model', methods=['GET'])
+def getLastModel():
+    last_key, last_value = labels_dict.popitem()
+    return last_key+1
 
 @app.route('/create-model', methods=['POST'])
 def createModel():
@@ -101,6 +110,7 @@ def train_classifier():
     return "Success training classifier"
 
 @app.route('/inference-classifier', methods=['POST'])
+@cross_origin()
 def inference_classifier():
     if not os.path.exists('./model.p'):
         return jsonify({'error': 'No model created'}), 400
@@ -118,36 +128,39 @@ def inference_classifier():
         os.makedirs(INPUT_DIR)
     image = Image.open(img_data)
     image.save(os.path.join(INPUT_DIR, img_data.filename))
-    img = cv2.imread(os.path.join(INPUT_DIR, '{}'.format(img_data.filename)))
-    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    try:
+        img = cv2.imread(os.path.join(INPUT_DIR, '{}'.format(img_data.filename)))
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-    results = hands.process(img_rgb)
-    if results.multi_hand_landmarks:
-        for hand_landmarks in results.multi_hand_landmarks:
-            mp_drawing.draw_landmarks(
-            img,  # image to draw
-            hand_landmarks,  # model output
-            mp_hands.HAND_CONNECTIONS,  # hand connections
-            mp_drawing_styles.get_default_hand_landmarks_style(),
-            mp_drawing_styles.get_default_hand_connections_style())
-        for hand_landmarks in results.multi_hand_landmarks:
-            for i in range(len(hand_landmarks.landmark)):
-                x = hand_landmarks.landmark[i].x
-                y = hand_landmarks.landmark[i].y
+        results = hands.process(img_rgb)
+        if results.multi_hand_landmarks:
+            for hand_landmarks in results.multi_hand_landmarks:
+                mp_drawing.draw_landmarks(
+                img,  # image to draw
+                hand_landmarks,  # model output
+                mp_hands.HAND_CONNECTIONS,  # hand connections
+                mp_drawing_styles.get_default_hand_landmarks_style(),
+                mp_drawing_styles.get_default_hand_connections_style())
+            for hand_landmarks in results.multi_hand_landmarks:
+                for i in range(len(hand_landmarks.landmark)):
+                    x = hand_landmarks.landmark[i].x
+                    y = hand_landmarks.landmark[i].y
 
-                x_.append(x)
-                y_.append(y)
+                    x_.append(x)
+                    y_.append(y)
 
-            for i in range(len(hand_landmarks.landmark)):
-                x = hand_landmarks.landmark[i].x
-                y = hand_landmarks.landmark[i].y
-                data_aux.append(x - min(x_))
-                data_aux.append(y - min(y_))
+                for i in range(len(hand_landmarks.landmark)):
+                    x = hand_landmarks.landmark[i].x
+                    y = hand_landmarks.landmark[i].y
+                    data_aux.append(x - min(x_))
+                    data_aux.append(y - min(y_))
 
-        prediction = model.predict([np.asarray(data_aux)])
-        print(labels_dict)
-        predicted_character = labels_dict[int(prediction[0])]
-        return predicted_character
-    
+            prediction = model.predict([np.asarray(data_aux)])
+            print(labels_dict)
+            predicted_character = labels_dict[int(prediction[0])]
+            return predicted_character
+    except Exception as e:
+        return "None attributed"
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0" ,debug=True, port=5000)
