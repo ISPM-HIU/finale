@@ -1,0 +1,31 @@
+.minimal-rounded{
+    border-radius : 5px;
+}
+
+.bg{
+    background: #06081d;
+}
+
+.menu{
+    transition: all 0.2s ease;
+    color: white;
+}
+
+.menu:hover{
+    background-color: #6529ce;
+}
+/*
+    Color :
+    Primary : 7a31fc
+    Secondary : 06081d
+*/
+
+.tools{
+    position: fixed;
+    top:10px;
+    right: 20px;
+}
+
+.overscroll{
+    overflow-y: scroll;
+}
