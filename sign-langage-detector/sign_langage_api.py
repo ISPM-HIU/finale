@@ -11,8 +11,11 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 app = Flask(__name__)
 DATA_DIR = './data'
+INPUT_DIR = './input'
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
+
+labels_dict = {}
 
 @app.route('/create-model', methods=['POST'])
 def createModel():
@@ -20,8 +23,12 @@ def createModel():
         return jsonify({'error': 'No file part'}), 400
     if 'number_model' not in request.form:
         return jsonify({'error': 'No model selected'}), 400
+    if 'model_name' not in request.form:
+        return jsonify({'error': 'No model name selected'}), 400
     img = request.files['img']
-    model = request.form['number_model']
+    model = int(request.form['number_model'])
+    name_model = request.form['model_name']
+    labels_dict[model] = name_model
     if img.filename == '':
         return jsonify({'error': 'No selected file'}), 400
     return collect_imgs(img, model, img.filename)
@@ -29,6 +36,7 @@ def createModel():
 def collect_imgs(img, model, filename):
     if not os.path.exists(os.path.join(DATA_DIR, str(model))):
         os.makedirs(os.path.join(DATA_DIR, str(model)))
+    print(labels_dict)
     print('Collecting data for class {}'.format(model))
     image = Image.open(img)
     image.save(os.path.join(DATA_DIR, str(model),filename))
@@ -38,7 +46,6 @@ mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 hands = mp_hands.Hands(static_image_mode=True, min_detection_confidence=0.3)
-DATA_DIR = './data'
 
 @app.route('/create-dataset', methods=['GET'])
 def dataset():
@@ -66,6 +73,7 @@ def dataset():
                         data_aux.append(y - min(y_))
                 data.append(data_aux)
                 labels.append(dir_)
+    print(labels)
     f = open('data.pickle', 'wb')
     pickle.dump({'data': data, 'labels': labels}, f)
     f.close()
@@ -78,7 +86,9 @@ def train_classifier():
     data_dict = pickle.load(open('./data.pickle', 'rb'))
     data = np.asarray(data_dict['data'])
     labels = np.asarray(data_dict['labels'])
-    x_train, x_test, y_train, y_test = train_test_split(data, labels, test_size=0.2, shuffle=True, stratify=labels)
+    print(labels)
+    print(data)
+    x_train, x_test, y_train, y_test = train_test_split(data, labels, test_size=0.2, shuffle=True)
     model = RandomForestClassifier()
     model.fit(x_train, y_train)
     y_predict = model.predict(x_test)
@@ -87,15 +97,15 @@ def train_classifier():
     f = open('model.p', 'wb')
     pickle.dump({'model': model}, f)
     f.close()
+    print(labels_dict)
     return "Success training classifier"
 
-@app.route('/inference-classifier', methods=['GET'])
+@app.route('/inference-classifier', methods=['POST'])
 def inference_classifier():
     if not os.path.exists('./model.p'):
         return jsonify({'error': 'No model created'}), 400
     model_dict = pickle.load(open('./model.p', 'rb'))
     model = model_dict['model'] 
-    labels_dict = {0: 'Tape', 1: 'Bien', 2: 'Peace'} #Vous pouvez changer les labels
     data_aux = []
     x_ = []
     y_ = []
@@ -104,12 +114,11 @@ def inference_classifier():
     img_data = request.files['img']
     if img_data.filename == '':
         return jsonify({'error': 'No selected image'}), 400
-    input_dir = os.path.join(DATA_DIR, 'input')
-    if not os.path.exists(input_dir):
-        os.makedirs(input_dir)
+    if not os.path.exists(INPUT_DIR):
+        os.makedirs(INPUT_DIR)
     image = Image.open(img_data)
-    image.save(os.path.join(input_dir, img_data.filename))
-    img = cv2.imread(os.path.join(DATA_DIR, 'input','{}'.format(img_data.filename)))
+    image.save(os.path.join(INPUT_DIR, img_data.filename))
+    img = cv2.imread(os.path.join(INPUT_DIR, '{}'.format(img_data.filename)))
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
     results = hands.process(img_rgb)
@@ -136,7 +145,7 @@ def inference_classifier():
                 data_aux.append(y - min(y_))
 
         prediction = model.predict([np.asarray(data_aux)])
-
+        print(labels_dict)
         predicted_character = labels_dict[int(prediction[0])]
         return predicted_character
     
