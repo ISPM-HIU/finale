@@ -7,20 +7,26 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
   const twiml = new MessagingResponse();
-  axios({
-    method: 'post',
-    url: 'http://173.249.22.169:9005/api/house/update',
-    data: {
-        command_text: req.body.Body
-    }
-  });
-  twiml.message("Message bien reçu")
+
+  try {
+    // Envoyer la commande à l'API
+    await axios.put('http://173.249.22.169:9005/api/house/update', {
+      command_text: String(req.body.Body)
+    });
+
+    // Répondre au message SMS
+    twiml.message('Message bien reçu');
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi de la commande à l\'API :', error);
+    twiml.message('Erreur lors du traitement de la commande');
+  }
 
   res.type('text/xml').send(twiml.toString());
 });
 
-app.listen(8888, () => {
-  console.log('Express server listening on port 8888');
+const PORT = 8888;
+app.listen(PORT, () => {
+  console.log(`Serveur Express en écoute sur le port ${PORT}`);
 });
