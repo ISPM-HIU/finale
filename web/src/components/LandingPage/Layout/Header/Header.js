@@ -32,56 +32,19 @@ const Header = () => {
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav">
-              <li>
-                <Link>Accueil</Link>
+              <li className="text-white">
+                <a>Accueil</a>
               </li>
-              <li>
-                <Link >Fonctionnalité</Link>
+              <li className="text-white">
+                <a >Fonctionnalité</a>
               </li>
-              <li>
-                <Link >Avantages</Link>
+              <li className="text-white">
+                <a >Avantages</a>
               </li>
-              <li>
-                <Link >Commencer</Link>
+              <li className="text-white p-1" style={{ backgroundColor: "#569bd5" }}>
+                <a>Commencer</a>
               </li>
-              {/* <li>
-                <Link to="courses.html">Commandes gestuelles</Link>
-              </li> */}
-              {/* <li className="dropdown">
-                <Link className="dropdown-toggle" to="#" data-toggle="dropdown">
-                  Pages
-                </Link>
-                <div className="dropdown-menu">
-                  <Link className="dropdown-item" to="elements.html">
-                    Elements
-                  </Link>
-                  <Link className="dropdown-item" to="course-details.html">
-                    Course Details
-                  </Link>
-                </div>
-              </li>
-              <li className="dropdown">
-                <Link className="dropdown-toggle" to="#" data-toggle="dropdown">
-                  Blog
-                </Link>
-                <div className="dropdown-menu">
-                  <Link className="dropdown-item" to="blog-home.html">
-                    Blog Home
-                  </Link>
-                  <Link className="dropdown-item" to="blog-single.html">
-                    Blog Details
-                  </Link>
-                </div>
-              </li> */}
-
-              {/* <li>
-                <Link to="contacts.html">Commandes vocales</Link>
-              </li> */}
-              {/* <li>
-                <button className="search">
-                  <span className="lnr lnr-magnifier" id="search"></span>
-                </button>
-              </li> */}
+        
             </ul>
           </div>
         </div>
