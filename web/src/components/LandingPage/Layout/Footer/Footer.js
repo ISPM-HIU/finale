@@ -1,4 +1,9 @@
 import React from "react";
+import watsap from "../../../../../src/images/watsap.png"
+import facebook from "../../../../../src/images/fb.png"
+import mail from "../../../../../src/images/mail.png"
+import { mapLinear } from "three/src/math/MathUtils";
+
 
 const Footer = () => {
   return (
@@ -17,64 +22,33 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-lg-3 col-md-6 single-footer-widget">
-            <h4>Quick Links</h4>
-            <ul>
-              <li>
-                <a href="#">Jobs</a>
-              </li>
-              <li>
-                <a href="#">Brand Assets</a>
-              </li>
-            </ul>
+          <div className="col-lg-9 col-md-6 single-footer-widget">
+          <div className="row">
+            <div className="d-flex justify-content-center col-md-4">
+              <img className="img-fluid2 border-left-top" src={watsap} alt="" width={"80%"} />
+            </div>
+            <div className="d-flex justify-content-center col-md-4">
+              <img className="img-fluid2 border-left-top" src={facebook} alt="" width={"80%"} />
+            </div>
+            <div className="d-flex justify-content-center col-md-4">
+              <img className="img-fluid2 border-left-top" src={mail} alt="" width={"80%"} />
+            </div>
           </div>
-          <div className="col-lg-3 col-md-6 single-footer-widget">
-            <h4>Features</h4>
-            <ul>
+            
+            {/* <ul>
               <li>
-                <a href="#">Jobs</a>
+                <a href="#">jarvis@gmail.com</a>
               </li>
+
               <li>
-                <a href="#">Brand Assets</a>
+                <a href="#"> +1234567890</a>
               </li>
-            </ul>
-          </div>
-          <div className="col-lg-3 col-md-6 single-footer-widget">
-            <h4>Resources</h4>
-            <ul>
-              <li>
-                <a href="#">Guides</a>
-              </li>
-              <li>
-                <a href="#">Research</a>
-              </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
-        <div className="footer-bottom row align-items-center">
-          <p className="footer-text m-0 col-lg-8 col-md-12">
-            Copyright ©
-            <script>document.write(new Date().getFullYear());</script>2024 All
-            rights reserved | This template is made with{" "}
-            <i className="fa fa-heart-o" aria-hidden="true"></i> by{" "}
-            <a href="https://colorlib.com" target="_blank">
-              Colorlib
-            </a>
-          </p>
-          <div className="col-lg-4 col-md-12 footer-social">
-            <a href="#">
-              <i className="fa fa-facebook"></i>
-            </a>
-            <a href="#">
-              <i className="fa fa-twitter"></i>
-            </a>
-            <a href="#">
-              <i className="fa fa-dribbble"></i>
-            </a>
-            <a href="#">
-              <i className="fa fa-behance"></i>
-            </a>
-          </div>
+        <div class="text-center p-3">
+          © 2024 Copyright:
+          <a class="text-reset fw-bold">SmartHome.com</a>
         </div>
       </div>
       {/* <div class="container my-5">

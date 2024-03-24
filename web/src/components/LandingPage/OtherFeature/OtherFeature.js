@@ -81,14 +81,12 @@ const OtherFeature = () => {
               >
             <div className="other-feature-item">
               {/* <i className="ti-headphone-alt"></i> */}
-              <i class="ti-headphone-alt"></i>
-              <h4>Live Supports</h4>
+              {/* <i class="ti-headphone-alt"></i> */}
+              <i class="ti-comment"></i>
+              <h4>Chatbot messenger</h4>
               <div>
                 <p>
-                  Lorem ipsum dolor sit amet consec tetur adipisicing elit, sed
-                  do eiusmod tempor incididunt labore. Lorem ipsum dolor sit
-                  amet consec tetur adipisicing elit, sed do eiusmod tempor
-                  incididunt labore.
+                Permettre aux utilisateurs de commander et de contrôler leur maison directement depuis l'application Messenger
                 </p>
               </div>
             </div>

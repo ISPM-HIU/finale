@@ -208,9 +208,9 @@ h1 {
   background-color: #090707;
 }
 
-.watsap{
+/* .watsap{
   background: url("../images/watsap.jpeg") no-repeat center;
-}
+} */
 .footer-area .single-footer-widget h4 {
   color: #fff;
   margin-bottom: 35px;
@@ -224,6 +224,9 @@ h1 {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   color: #828bb2;
+}
+.img-fluid2 {
+  max-width: 20% !important;
 }
 /* endFooter */
 

@@ -36,10 +36,10 @@ const Header = () => {
                 <Link to="#">Accueil</Link>
               </li>
               <li>
-                <Link to="#">Contrôle à distance</Link>
+                <Link to="#">Fonctionnalité</Link>
               </li>
               <li>
-                <Link to="#">Personnalisation</Link>
+                <Link to="#">Avantages</Link>
               </li>
               <li>
                 <Link to="#">Exploration 3D</Link>
