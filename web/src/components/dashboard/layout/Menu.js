@@ -12,9 +12,8 @@ export function Menu(props) {
                 <hr style={{color:"white"}}/>
                 <ul className="p-2">
                     <MenuComponent name={"Home"} icon={faHouse} href={"/dashboard"}/>
-                    <MenuComponent name={"Materials"} icon={faCouch} href={"/dashboard/assistant"}/>
+                    <MenuComponent name={"Materials"} icon={faCouch} href={"/dashboard/materials"}/>
                     <MenuComponent name={"Assistant"} icon={faUniversalAccess} href={"/dashboard/assistant"}/>
-                    <MenuComponent name={"House"} icon={faOdnoklassniki} href={"/dashboard/assistant"}/>
                     <MenuComponent name={"Consommation"} icon={faChartBar} href={"/dashboard/consumption"}/>
                 </ul>
             </div>

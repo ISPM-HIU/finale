@@ -26,14 +26,14 @@ const model = {
     });
     return result;
   },
-  update: async (materiel: string, command: boolean) => {
+  update: async (materiel: string, command: boolean,) => {
     let updateData: { [key: string]: any } = {};
     updateData[materiel] = command;
 
     let result = await prisma.house.update({
         data: updateData,
         where: {
-              id_house: 2
+              id_house: 1
           },
     });
     return result;

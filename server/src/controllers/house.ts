@@ -1,24 +1,81 @@
 import { Response, Request } from "express"
 import model from "../models/house"
+import { Prisma, PrismaClient } from "@prisma/client";
+
 import { getCommandPrompt } from "../services/getCommandPrompt"
 import { globalSocket } from "../services/socketService"
+const prisma = new PrismaClient();
+let heures = 0;
+let minutes = 0;
+let secondes = 0;
+let timer1: any = null
+let timer2: any = null
+async function mettreAJourChronometre1() {
+    console.log(`${heures.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondes.toString().padStart(2, '0')}`);
+    secondes++;
+    if (secondes >= 60) {
+        secondes = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            heures++;
+        }
+    }
+    await prisma.house.update({
+        data: {
+            duration1: `${heures.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondes.toString().padStart(2, '0')}`,
+        },
+        where: {
+            id_house: 1
+        }
+    }).then((e) => globalSocket.emit("update-materials", e)).catch((err) => console.log(err)
+    )
+}
+
+async function mettreAJourChronometre2() {
+    console.log(`${heures.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondes.toString().padStart(2, '0')}`);
+    secondes++;
+    if (secondes >= 60) {
+        secondes = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            heures++;
+        }
+    }
+    await prisma.house.update({
+        data: {
+            duration2: `${heures.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secondes.toString().padStart(2, '0')}`,
+        },
+        where: {
+            id_house: 1
+        }
+    }).then((e) => globalSocket.emit("update-materials", e)).catch((err) => console.log(err)
+    )
+}
+
 
 const controller = {
-    update:async(req: Request, res: Response)=>{
-        let { 
+    update: async (req: Request, res: Response) => {
+        let {
             command_text
         } = req.body
         let command_message = getCommandPrompt(command_text)
-        console.log("commande",command_message);
+        console.log("commande", command_message);
 
-        switch (command_message){
+        switch (command_message) {
             case 'allumer led1':
                 try {
                     let house = await model.update(
                         "led1",
                         true
                     )
-                    if(house) {
+                    heures = 0;
+                    minutes = 0;
+                    secondes = 0;
+                    timer1 = setInterval(mettreAJourChronometre1, 1000);
+
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -34,7 +91,18 @@ const controller = {
                         "led1",
                         false
                     )
-                    if(house) {
+
+                    clearInterval(timer1)
+                    await prisma.house.update({
+                        data: {
+                            duration1: ``,
+                        },
+                        where: {
+                            id_house: 1
+                        }
+                    }).then((e) => console.log(e)
+                    ).catch((err) => console.log(err))
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -50,7 +118,9 @@ const controller = {
                         "led2",
                         true
                     )
-                    if(house) {
+                    timer2 = setInterval(mettreAJourChronometre2, 1000);
+
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -66,7 +136,17 @@ const controller = {
                         "led2",
                         false
                     )
-                    if(house) {
+                    clearInterval(timer2)
+                    await prisma.house.update({
+                        data: {
+                            duration2: ``,
+                        },
+                        where: {
+                            id_house: 1
+                        }
+                    }).then((e) => console.log(e)
+                    ).catch((err) => console.log(err))
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -82,7 +162,7 @@ const controller = {
                         "fenetre1",
                         true
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -98,7 +178,7 @@ const controller = {
                         "fenetre1",
                         false
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -114,7 +194,7 @@ const controller = {
                         "fenetre2",
                         true
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -130,7 +210,7 @@ const controller = {
                         "fenetre2",
                         false
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -146,7 +226,7 @@ const controller = {
                         "porte1",
                         true
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -162,7 +242,7 @@ const controller = {
                         "porte1",
                         false
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -178,7 +258,7 @@ const controller = {
                         "porte2",
                         true
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -194,7 +274,7 @@ const controller = {
                         "porte2",
                         false
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -210,7 +290,7 @@ const controller = {
                         "securite",
                         true
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -226,7 +306,7 @@ const controller = {
                         "securite",
                         false
                     )
-                    if(house) {
+                    if (house) {
                         res.status(200).send(house)
                         globalSocket.emit("update-materials", house)
                     }
@@ -243,7 +323,7 @@ const controller = {
         }
     },
     //controllers en cas d'effraction
-    updateMaterial: (req: Request, res: Response)=>{
+    updateMaterial: (req: Request, res: Response) => {
         let { materiel, status } = req.body
         let value = status != null ? status : true
         console.log(value)
@@ -252,7 +332,7 @@ const controller = {
                 materiel,
                 value
             )
-            if(house)
+            if (house)
                 res.status(200).send(house)
         }
         catch (error: any) {
@@ -264,7 +344,7 @@ const controller = {
         try {
             let data = await model.getAll()
 
-            if(data)
+            if (data)
                 res.status(200).send(data)
             else
                 res.status(200).send([])
@@ -277,10 +357,10 @@ const controller = {
     getOne: async (req: Request, res: Response) => {
         let id = parseInt(req.params.id)
 
-        try { 
+        try {
             let data = await model.getOne(id)
-           
-            if(data)
+
+            if (data)
                 res.status(200).send(data)
             else
                 res.status(200).send({})
@@ -293,19 +373,19 @@ const controller = {
     getSecurity: async (req: Request, res: Response) => {
         let id = parseInt(req.params.id)
 
-        try { 
+        try {
             let data = await model.getOne(id)
-            
-            if(data) {
+
+            if (data) {
                 let declencher = false
                 if (
                     data.securite && (data.porte1 ||
-                    data.porte2 ||
-                    data.fenetre1 ||
-                    data.fenetre2)
-                  )
+                        data.porte2 ||
+                        data.fenetre1 ||
+                        data.fenetre2)
+                )
                     declencher = true;
-                res.status(200).send({"declencher":declencher})
+                res.status(200).send({ "declencher": declencher })
             }
             else
                 res.status(200).send({})
@@ -316,7 +396,7 @@ const controller = {
         }
     },
     create: async (req: Request, res: Response) => {
-        let { 
+        let {
             user_id
         } = req.body
         let userId = parseInt(user_id)
@@ -324,7 +404,7 @@ const controller = {
             let house = await model.create(
                 userId
             )
-            if(house)
+            if (house)
                 res.status(200).send(house)
         }
         catch (error: any) {

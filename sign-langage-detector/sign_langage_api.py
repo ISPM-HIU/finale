@@ -180,6 +180,7 @@ def inference_classifier():
     data_aux = []
     x_ = []
     y_ = []
+    print(request.files.to_dict())
     if 'img' not in request.files:
         return jsonify({'error': 'No image part'}), 400
     img_data = request.files['img']
@@ -190,11 +191,14 @@ def inference_classifier():
     image = Image.open(img_data)
     image.save(os.path.join(INPUT_DIR, img_data.filename))
     try:
+        print('1')
         img = cv2.imread(os.path.join(INPUT_DIR, '{}'.format(img_data.filename)))
         img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
+        print('2')
         results = hands.process(img_rgb)
+        print('3')
         if results.multi_hand_landmarks:
+            print('4')
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(
                 img,  # image to draw
@@ -206,7 +210,6 @@ def inference_classifier():
                 for i in range(len(hand_landmarks.landmark)):
                     x = hand_landmarks.landmark[i].x
                     y = hand_landmarks.landmark[i].y
-
                     x_.append(x)
                     y_.append(y)
 
@@ -215,11 +218,16 @@ def inference_classifier():
                     y = hand_landmarks.landmark[i].y
                     data_aux.append(x - min(x_))
                     data_aux.append(y - min(y_))
-
+            print('5')
             prediction = model.predict([np.asarray(data_aux)])
             print(labels_dict)
-            predicted_character = labels_dict[int(prediction[0])]["name"]
-            return predicted_character
+            predicted_character = labels_dict[int(prediction[0])]["action"]
+            material_character = labels_dict[int(prediction[0])]["material"]
+            result = predicted_character+' '+material_character
+            print(result)
+            return {"data":result}
+        else:
+            return "No model"
     except Exception as e:
         return "None attributed"
 

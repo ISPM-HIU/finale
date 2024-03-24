@@ -39,4 +39,6 @@ model House {
   securite          Boolean   @default(false)
   user             Users     @relation(fields: [userId], references: [u_id])
   userId           Int
+  duration1        String?       @db.VarChar(255)
+  duration2        String?       @db.VarChar(255)
 }

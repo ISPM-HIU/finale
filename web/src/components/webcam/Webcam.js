@@ -229,12 +229,10 @@ export function WebcamControl() {
                     </div>
                     :
                     <>
-                        <div className="d-flex px-3">
+                        <div className="container d-flex px-3">
                             <button type="submit" className="btn btn-primary col-md-4" onClick={captureScreenshot}>Capturer le mouvement</button>
                             <button type="submit" className="btn btn-success col-md-4 mx-2" onClick={controlEdit}>Ajouter un nouveau mouvement</button>
-                            <Link to={"/dashboard/assistant/configure"} className="col-md-4">
-                                <button type="submit" className="btn btn-secondary w-100" onClick={controlEdit}>Configurer l'assistant</button>
-                            </Link>
+                            
                         </div>
 
                     </>
