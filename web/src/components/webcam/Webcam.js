@@ -15,14 +15,14 @@ export function WebcamControl(props) {
     const [idModel, setIdModel] = useState("");
     const [nameModel, setNameModel] = useState("")
     const [message, setMessage] = useState("")
-    const [material, setMaterial] = useState("");
-    const [action, setAction] = useState("")
+    const [material, setMaterial] = useState("fenetre1");
+    const [action, setAction] = useState("ouvrir")
     const [edit, setEdit] = useState(false)
     const [lengthLabel, setLengthLabel] = useState(0)
 
     const frameLimit = 8;
     const modelDataLimit = 10;
-    const url_sign_hand = "http://localhost:5000";
+    const url_sign_hand = "http://135.125.191.198:5000";
 
     /**
      * Convert the dataURL into a file
@@ -230,12 +230,12 @@ export function WebcamControl(props) {
                     </div>
                     <div class="mb-2 col-md-3 me-1">
                         <select class="form-select form-select-sm" aria-label="Selectionner le materiel" value={material} onChange={(e) => { setMaterial(e.currentTarget.value) }} >
-                            <option value="fenetre 1">Fenêtre 1</option>
-                            <option value="fenetre 2">Fenêtre 2</option>
-                            <option value="porte 1">Porte 1</option>
-                            <option value="porte 2">Porte 2</option>
-                            <option value="lampe 1">Lampe 1</option>
-                            <option value="lampe 2">Lampe 2</option>
+                            <option value="fenetre1">Fenêtre 1</option>
+                            <option value="fenetre2">Fenêtre 2</option>
+                            <option value="porte1">Porte 1</option>
+                            <option value="porte2">Porte 2</option>
+                            <option value="lampe1">Lampe 1</option>
+                            <option value="lampe2">Lampe 2</option>
 
                         </select>
                     </div>
@@ -264,9 +264,7 @@ export function WebcamControl(props) {
                 <div className="d-flex px-3">
                     <button type="submit" className="btn btn-primary col-md-4" onClick={captureScreenshot}>Capturer le mouvement</button>
                     <button type="submit" className="btn btn-success col-md-4 mx-2" onClick={controlEdit}>Ajouter un nouveau mouvement</button>
-                    <Link to={"/dashboard/assistant/configure"} className="col-md-4">
-                        <button type="submit" className="btn btn-secondary w-100" onClick={controlEdit}>Configurer l'assistant</button>
-                    </Link>
+                    
                 </div>
 
             </>

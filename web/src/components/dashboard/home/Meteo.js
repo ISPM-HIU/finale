@@ -7,7 +7,7 @@ export function Meteo(props) {
     const [weatherData, setWeatherData] = useState({})
 
     async function getWeather() {
-        const data = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=-18.9137&longitude=47.5361&current=temperature_2m,weather_code,cloud_cover&forecast_days=1")
+        const data = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=-18.9137&longitude=47.5361&current=temperature_2m,weather_code,cloud_cover&forecast_days=1").catch((err)=>console.log(err))
         const json = await data.data
         return json
     }
