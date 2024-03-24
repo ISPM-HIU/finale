@@ -8,15 +8,15 @@ export function Meteo(props) {
 
     async function getWeather() {
         const data = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=-18.9137&longitude=47.5361&current=temperature_2m,weather_code,cloud_cover&forecast_days=1")
+            .catch(e=>console.log(e))
         const json = await data.data
         return json
     }
 
-    useEffect(() => {
-        setWeatherData(async e => {
-            var data = await getWeather();
-            return data
-        })
+    useEffect(async() => {
+        var data =await getWeather();
+
+        setWeatherData(data)
     }, [weatherData])
 
     function getValueCloud() {
