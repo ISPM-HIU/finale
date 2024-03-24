@@ -229,7 +229,7 @@ export function WebcamControl() {
                     </div>
                     :
                     <>
-                        <div className="container d-flex px-3">
+                        <div className="d-flex px-3 ">
                             <button type="submit" className="btn btn-primary col-md-4" onClick={captureScreenshot}>Capturer le mouvement</button>
                             <button type="submit" className="btn btn-success col-md-4 mx-2" onClick={controlEdit}>Ajouter un nouveau mouvement</button>
                             

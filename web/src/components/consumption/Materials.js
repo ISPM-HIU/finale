@@ -6,6 +6,7 @@ export const Materials = ()=>{
     const {http} = useHttps()
     const [socket, setSocket] = useState(null);
     const [number, setNumber] = useState(0);
+    const [number2, setNumber2] = useState(0);
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
@@ -61,7 +62,7 @@ export const Materials = ()=>{
           Durée: {data.duration1}
         </Card.Text>
         <Card.Text>
-          En kWH: {6580 * (parseInt(data.duration1)/3600) || 0}
+          En kWH: {(6580 * (parseInt(data.duration1)/3600)).toFixed(2) || 0}
         </Card.Text>
       </Card.Body>
       <Card.Footer className="text-muted">
@@ -70,7 +71,7 @@ export const Materials = ()=>{
         <Form.Label>Prix du 1KWH: </Form.Label>
         <Form.Control type="number" value={number} onChange={(e)=>setNumber(e.target.value)} />
       </Form.Group>
-      <Card.Text>{number * 6580 * (parseInt(data.duration1)/3600) || 0} Ar</Card.Text>
+      <Card.Text>{(number * 6580 * (parseInt(data.duration1)/3600)).toFixed(2) || 0} Ar</Card.Text>
     </Form>
       </Card.Footer>
     </Card>
@@ -82,16 +83,16 @@ export const Materials = ()=>{
           Durée: {data.duration2}
         </Card.Text>
         <Card.Text>
-          En kWH: {6580 * (parseInt(data.duration2)/3600) || 0}
+          En kWH: {6580 * (parseInt(data.duration2)/3600).toFixed(2) || 0}
         </Card.Text>
       </Card.Body>
       <Card.Footer className="text-muted">
       <Form className="d-flex flex-column">
       <Form.Group className="mb-3 d-flex flex-row gap-20" controlId="exampleForm.ControlInput1">
         <Form.Label>Prix du 1KWH: </Form.Label>
-        <Form.Control type="number" value={number} onChange={(e)=>setNumber(e.target.value)} />
+        <Form.Control type="number" value={number2} onChange={(e)=>setNumber2(e.target.value)} />
       </Form.Group>
-      <Card.Text>{number * 6580 * (parseInt(data.duration2)/3600) || 0} Ar</Card.Text>
+      <Card.Text>{(number2 * 6580 * (parseInt(data.duration2)/3600)).toFixed(2) || 0} Ar</Card.Text>
     </Form>
       </Card.Footer>
     </Card>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { Modal, Button } from "react-bootstrap"
 
 export function ConfigurableComp(props) {
-    const url_sign_hand = "http://localhost:5000";
+    const url_sign_hand = "http://135.125.191.198:5000";
     const [modalShow, setModalShow] = useState(false)
     const onDelete = (event) => {
         event.preventDefault()
