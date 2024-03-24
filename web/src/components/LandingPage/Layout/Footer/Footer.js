@@ -2,7 +2,6 @@ import React from "react";
 import watsap from "../../../../../src/images/watsap.png"
 import facebook from "../../../../../src/images/fb.png"
 import mail from "../../../../../src/images/mail.png"
-import { mapLinear } from "three/src/math/MathUtils";
 
 
 const Footer = () => {
@@ -13,26 +12,34 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6 single-footer-widget">
             <h4>Contactez-nous</h4>
             <ul>
-              <li>
+              {/* <li>
                 <a href="#">jarvis@gmail.com</a>
-              </li>
+              </li> */}
 
-              <li>
-                <a href="#"> +1234567890</a>
-              </li>
             </ul>
           </div>
-          <div className="col-lg-9 col-md-6 single-footer-widget">
-          <div className="row">
-            <div className="d-flex justify-content-center col-md-4">
-              <img className="img-fluid2 border-left-top" src={watsap} alt="" width={"80%"} />
+          <div className="col-lg-6 col-md-6 single-footer-widget">
+            <div className="row">
+              <div className="d-flex justify-content-center col-md-4">
+                <img className="img-fluid2 border-left-top" src={watsap} alt="" width={"80%"} />
+                <span>
+                  <a href="#"> +1234567890</a>
+                </span>
+              </div>
+              <div className="d-flex justify-content-center col-md-4">
+                <img className="img-fluid2 border-left-top" src={facebook} alt="" width={"80%"} />
+                <span>
+                  <a href="#"> +1234567890</a>
+                </span>
+              </div>
+              <div className="d-flex justify-content-center col-md-4">
+                <img className="img-fluid2 border-left-top" src={mail} alt="" width={"80%"} />
+                <span>
+                    <a href="#">jarvis@gmail.com</a>
+                </span>
+                </div>
             </div>
-            <div className="d-flex justify-content-center col-md-4">
-              <img className="img-fluid2 border-left-top" src={facebook} alt="" width={"80%"} />
-            </div>
-            <div className="d-flex justify-content-center col-md-4">
-              <img className="img-fluid2 border-left-top" src={mail} alt="" width={"80%"} />
-            </div>
+          <div className="col-lg-3">
           </div>
             
             {/* <ul>
