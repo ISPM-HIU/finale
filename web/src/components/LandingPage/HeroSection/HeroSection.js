@@ -12,7 +12,7 @@ const HeroSection = () => {
             className="row justify-content-center fullscreen align-items-center"
             style={{ height: "788px" }}
           >
-            <div className="col-lg-5 col-md-8 home-banner-left textContainer mb-5">
+            <div className="col-lg-5 col-md-8 home-banner-left textContainer style-text">
               {/* <h1 className="text-white d_f bouncingAnim">
               <span>B</span>
               <span>i</span>
@@ -42,7 +42,7 @@ const HeroSection = () => {
               </h1>
               <p className="d-flex text-white justify-content-center  mt-20 mb-40">dans</p> */}
 
-              <h1  className="text-white">
+              <h1  className=" text-white">
                SmartHome 
               </h1>
               <p className="mx-auto text-white">
