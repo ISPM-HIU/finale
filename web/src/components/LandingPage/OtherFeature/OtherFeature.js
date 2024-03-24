@@ -7,7 +7,7 @@ const OtherFeature = () => {
         <div className="feature-inner row">
           <div className="col-lg-12">
             <div className="section-title text-left">
-              <h2 className="animated-text">
+              <h2 className="animated-text" id="function">
                 Les fonctionnalités
               </h2>
               <p>

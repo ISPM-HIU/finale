@@ -33,16 +33,16 @@ const Header = () => {
           >
             <ul className="navbar-nav">
               <li className="text-white">
-                <a>Accueil</a>
+                <a href="#accueil">Accueil</a>
               </li>
               <li className="text-white">
-                <a >Fonctionnalité</a>
+                <a href="#function">Fonctionnalité</a>
               </li>
               <li className="text-white">
-                <a >Avantages</a>
+                <a href="#avantages">Avantages</a>
               </li>
               <li className="text-white p-1" style={{ backgroundColor: "#569bd5" }}>
-                <a>Commencer</a>
+                <a href="http://localhost:3000/dashboard" target="_blank">Commencer</a>
               </li>
         
             </ul>

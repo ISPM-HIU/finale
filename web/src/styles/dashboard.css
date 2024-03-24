@@ -77,3 +77,6 @@
 .wifi{
     background-color: rgb(48, 48, 48);
 }
+a{
+    text-decoration: none !important;
+}

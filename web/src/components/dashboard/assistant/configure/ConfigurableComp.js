@@ -17,9 +17,10 @@ export function ConfigurableComp(props) {
             .then(response => {
                 axios.get(url_sign_hand + "/get-all-model")
                     .then(response => {
+                        console.log(response.data);
                         const dataArray = Object.values(response.data);
                         console.log(dataArray);
-                        props.setMaterial(dataArray)
+                        props.setMaterial(response.data)
                         setModalShow(false)
                     })
                     .catch(error => {
