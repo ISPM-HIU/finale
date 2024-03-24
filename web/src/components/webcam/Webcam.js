@@ -22,7 +22,7 @@ export function WebcamControl(props) {
 
     const frameLimit = 8;
     const modelDataLimit = 10;
-    const url_sign_hand = "http://135.125.191.198:5000";
+    const url_sign_hand = "http://localhost:5000";
 
     /**
      * Convert the dataURL into a file
