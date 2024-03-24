@@ -223,13 +223,13 @@ export function WebcamControl(props) {
             return <div>
                 <div style={{
                     display: "flex"
-                }}>
-                    <div class="mb-2 col-md-3 me-1">
+                }} className="justify-content-center">
+                    <div class="mb-2 col-md-3 mx-1">
                         <input type="text" className="form-control" id="nameLabel" placeholder="Entrer le nom du modèle"
                             value={nameModel} onChange={(e) => { setNameModel(e.currentTarget.value) }} />
                     </div>
-                    <div class="mb-2 col-md-3 me-1">
-                        <select class="form-select form-select-sm" aria-label="Selectionner le materiel" value={material} onChange={(e) => { setMaterial(e.currentTarget.value) }} >
+                    <div class="mb-2 col-md-3 mx-1">
+                        <select class="form-select form-select-sm py-2" aria-label="Selectionner le materiel" value={material} onChange={(e) => { setMaterial(e.currentTarget.value) }} >
                             <option value="fenetre1">Fenêtre 1</option>
                             <option value="fenetre2">Fenêtre 2</option>
                             <option value="porte1">Porte 1</option>
@@ -239,8 +239,8 @@ export function WebcamControl(props) {
 
                         </select>
                     </div>
-                    <div class="mb-2 col-md-3 me-1">
-                        <select class="form-select form-select-sm" aria-label="Selectionner l'action" value={action} onChange={(e) => { setAction(e.currentTarget.value) }} >
+                    <div class="mb-2 col-md-3 mx-1">
+                        <select class="form-select form-select-sm py-2" aria-label="Selectionner l'action" value={action} onChange={(e) => { setAction(e.currentTarget.value) }} >
                             {
                                 material.includes("fenetre") || material.includes("porte") ?
                                     <>
@@ -256,15 +256,16 @@ export function WebcamControl(props) {
                     </div>
 
                 </div>
+                <div className="d-flex justify-content-center">
                 <button type="submit" className="btn btn-success me-3" onClick={captureModel}>Ajouter un nouveau signe</button>
-                <button type="submit" className="btn btn-primary me-3" onClick={controlEdit}>Retour</button>
+                <button type="submit" className="btn btn-danger me-3" onClick={controlEdit}>Retour</button>
+                </div>
             </div>
         } else {
             return <>
-                <div className="d-flex px-3">
+                <div className="d-flex px-3 justify-content-center">
                     <button type="submit" className="btn btn-primary col-md-4" onClick={captureScreenshot}>Capturer le mouvement</button>
                     <button type="submit" className="btn btn-success col-md-4 mx-2" onClick={controlEdit}>Ajouter un nouveau mouvement</button>
-                    
                 </div>
 
             </>
