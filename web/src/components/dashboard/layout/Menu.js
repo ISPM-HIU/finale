@@ -2,6 +2,7 @@ import { faCouch, faHouse, faUniversalAccess } from "@fortawesome/free-solid-svg
 import { MenuComponent } from "../menu/MenuComponent";
 import { faOdnoklassniki } from "@fortawesome/free-brands-svg-icons";
 import { Tools } from "../home/Tools";
+import { faChartBar } from "@fortawesome/free-regular-svg-icons";
 
 export function Menu(props) {
     return <>
@@ -14,6 +15,7 @@ export function Menu(props) {
                     <MenuComponent name={"Materials"} icon={faCouch} href={"/dashboard/assistant"}/>
                     <MenuComponent name={"Assistant"} icon={faUniversalAccess} href={"/dashboard/assistant"}/>
                     <MenuComponent name={"House"} icon={faOdnoklassniki} href={"/dashboard/assistant"}/>
+                    <MenuComponent name={"Consommation"} icon={faChartBar} href={"/dashboard/consumption"}/>
                 </ul>
             </div>
             <div className="col-md-10 position-fixed end-0 overscroll">

@@ -63,3 +63,17 @@
     position: absolute;
     right: 5px;
 }
+
+.board-card{
+    border-radius:10px;
+    width: 100%;
+    min-height: 50px;
+}
+
+.elec{
+    background-color: rgb(255, 208, 0);
+}
+
+.wifi{
+    background-color: rgb(48, 48, 48);
+}
