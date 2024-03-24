@@ -15,11 +15,10 @@ export function Meteo(props) {
         } else return 0
     }
 
-    useEffect(() => {
-        setWeatherData(async e => {
-            var data = await getWeather();
-            return data
-        })
+    useEffect(async() => {
+        var data =await getWeather();
+
+        setWeatherData(data)
     }, [weatherData])
 
     function getValueCloud() {
