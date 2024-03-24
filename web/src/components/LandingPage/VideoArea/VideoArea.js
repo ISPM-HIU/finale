@@ -7,8 +7,8 @@ const VideoArea = () => {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-4">
-            <div className="section-title text-white">
-              <h2 className="text-white">
+            <div className="section-title ">
+              <h2 className="">
               Accessibilité et Contrôle
               </h2>
               <p>
@@ -19,8 +19,8 @@ const VideoArea = () => {
             </div>
           </div>
           <div className="col-lg-4">
-            <div className="section-title text-white">
-              <h2 className="text-white">
+            <div className="section-title ">
+              <h2 className="">
                 Expérience Utilisateur
               </h2>
               <p>
@@ -31,8 +31,8 @@ const VideoArea = () => {
             </div>
           </div>
           <div className="col-lg-4">
-            <div className="section-title text-white">
-              <h2 className="text-white">
+            <div className="section-title ">
+              <h2 className="">
               Flexibilité et Efficacité
               </h2>
               <p>
@@ -55,10 +55,10 @@ const VideoArea = () => {
                       <div className="video-part">
                         <div className="overlay"></div>
                       </div>
-                      <h4 className="text-white mb-20 mt-30">
+                      <h4 className=" mb-20 mt-30">
                       Sécurité et Innovation
                       </h4>
-                      <p className="text-white mb-20">
+                      <p className=" mb-20">
 
                       Accessibilité Universelle et Inclusivité <br/>
                       Sécurité Améliorée et Tranquillité d'Esprit<br/>

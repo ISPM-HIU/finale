@@ -196,6 +196,7 @@ h1 {
   /* height: 100vh; */
   height: 35em;
   background: url("../images/video-area-bg.png") no-repeat center;
+  background-size: cover;
 }
 
 /* nedVideoArea */
@@ -241,7 +242,7 @@ h1 {
 	letter-spacing: 2px;
 	margin-bottom: 20px;
 	color: red;
-	justify-content: center;
+	/* justify-content: center; */
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;

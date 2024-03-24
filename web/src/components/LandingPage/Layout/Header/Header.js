@@ -33,16 +33,16 @@ const Header = () => {
           >
             <ul className="navbar-nav">
               <li>
-                <Link to="#">Accueil</Link>
+                <Link>Accueil</Link>
               </li>
               <li>
-                <Link to="#">Fonctionnalité</Link>
+                <Link >Fonctionnalité</Link>
               </li>
               <li>
-                <Link to="#">Avantages</Link>
+                <Link >Avantages</Link>
               </li>
               <li>
-                <Link to="#">Exploration 3D</Link>
+                <Link >Exploration 3D</Link>
               </li>
               {/* <li>
                 <Link to="courses.html">Commandes gestuelles</Link>
