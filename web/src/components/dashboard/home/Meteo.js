@@ -6,10 +6,13 @@ import { useEffect, useState } from "react";
 export function Meteo(props) {
     const [weatherData, setWeatherData] = useState({})
 
-    async function getWeather() {
+    async function getWeather() {  
         const data = await axios.get("https://api.open-meteo.com/v1/forecast?latitude=-18.9137&longitude=47.5361&current=temperature_2m,weather_code,cloud_cover&forecast_days=1")
-        const json = await data.data
-        return json
+            .catch(e=>console.log(e))
+        if(data){
+            const json = await data.data
+            return json
+        } else return 0
     }
 
     useEffect(() => {
