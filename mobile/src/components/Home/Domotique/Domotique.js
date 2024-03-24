@@ -14,7 +14,8 @@ import CustomSnackBar from "../../Common/CustomSnackBar/CustomSnackBar";
 import CustomDialog from "../../Common/CustomDialog/CustomDialog";
 import Voice from "@react-native-voice/voice";
 import HouseData from "./HouseData/HouseData";
-// import * as Speech from 'expo-speech';
+import * as Speech from 'expo-speech';
+import FontAwesome from "react-native-vector-icons/FontAwesome"
 
 LogBox.ignoreLogs(["new NativeEventEmitter"]);
 
@@ -54,8 +55,9 @@ const Domotique = ({ navigation }) => {
       let response = await https.get(`/house/security/${id}`);
       if (response) {
         let declencher = response.data.declencher
+        // console.log(declencher)
         if(declencher) {
-          // textToSpeech("Attention, une porte ou fenêtre est ouverte alors que la sécurité est activée.")
+          textToSpeech("Attention, une porte ou fenêtre est ouverte alors que la sécurité est activée.")
         }
         setSecurity(declencher)
       }
@@ -64,12 +66,12 @@ const Domotique = ({ navigation }) => {
     }
   }
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     checkSecurity()
-  //     getHouse()
-  //   }, 3000)
-  // }, [])
+  useEffect(() => {
+    setInterval(() => {
+      checkSecurity()
+      getHouse()
+    }, 3000)
+  }, [])
 
   const getHouse = async () => {
     let id = 2;
@@ -100,6 +102,7 @@ const Domotique = ({ navigation }) => {
         command_text: prompt,
       });
       if (response) {
+        textToSpeech("Commande efféctué avec succès")
         setCommanResults(true);
         setLoading(false);
         getHouse();
@@ -130,6 +133,7 @@ const Domotique = ({ navigation }) => {
   const onSpeechError = (error) => {
     console.log(error);
     // startSpeechToText()
+    setStarted(false);
   };
 
   const startSpeechToText = async () => {
@@ -156,8 +160,8 @@ const Domotique = ({ navigation }) => {
     <SafeAreaView style={[globalStyle.container]}>
       <ScrollView>
         <View style={styles.root}>
-          <Text style={{ ...styles.title, color: primary }}>
-            House interaction
+          <Text style={{ ...styles.title, color: primary, marginLeft: 20, marginRight: 20 }}>
+            Parlez dans la commande vocale pour contrôler la maison.
           </Text>
           {loading && (
             <Text style={{ ...styles.successTitle, color: primary }}>
@@ -167,12 +171,17 @@ const Domotique = ({ navigation }) => {
 
           <Button
             mode="contained"
-            style={{ backgroundColor: started ? "red" : secondary }}
+            style={{ 
+              backgroundColor: started ? "red" : secondary,
+              width: "250px",
+              
+            }}
             onPress={started ? stopSpeechToText : startSpeechToText}
           >
-            {started ? "Stop Recording" : "Start Recording"}
+            {started ? "Stoper " : "S'enregistrer "}
+            {started ? <FontAwesome name="microphone-slash" size={15} color="white" /> : <FontAwesome name="microphone" size={15} color="white" />}
           </Button>
-          <HouseData house={house} />
+          {/* <HouseData house={house} /> */}
         </View>
       </ScrollView>
       <CustomSnackBar
@@ -213,9 +222,10 @@ export default Domotique;
 
 const styles = StyleSheet.create({
   root: {
-    padding: 10,
+    marginTop: "50%",
     display: "flex",
     justifyContent: "center",
+    alignItems: "center"
   },
   title: {
     textAlign: "center",
