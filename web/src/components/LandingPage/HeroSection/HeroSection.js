@@ -42,11 +42,11 @@ const HeroSection = () => {
               </h1>
               <p className="d-flex text-white justify-content-center  mt-20 mb-40">dans</p> */}
 
-              <h1  className=" text-white">
+              <h1  className=" text-white" id="accueil">
                SmartHome 
               </h1>
               <p className="mx-auto text-white">
-                Maîtrisez votre demeure, où que vous soyez.
+                Maîtrisez votre demeure,  où que vous soyez.
               </p>
             </div>
             <div className="offset-lg-2 col-lg-5 col-md-12 home-banner-right mtop">
