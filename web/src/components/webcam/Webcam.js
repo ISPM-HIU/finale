@@ -22,7 +22,7 @@ export function WebcamControl() {
 
     const frameLimit = 8;
     const modelDataLimit = 20;
-    const url_sign_hand = process.env.REACT_APP_SIGN_HAND_URL;
+    const url_sign_hand = "http://135.125.191.198:5000";
 
     /**
      * Convert the dataURL into a file
@@ -106,7 +106,9 @@ export function WebcamControl() {
                     axios.post(url_sign_hand + "/create-model", form_data)
                         .then(e => {
                             console.log(e)
-                            setLengthLabel(e=>e+1)
+                            setLengthLabel(e=>{
+                                return e+1
+                            })
                         })
                         .catch(e => {
                             console.log(e)

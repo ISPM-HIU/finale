@@ -10,6 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import numpy as np
+import shutil
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -21,6 +22,10 @@ if not os.path.exists(DATA_DIR):
 
 labels_dict = {}
 
+@app.route('/get-all-model', methods=['GET'])
+def getAll():
+    return labels_dict
+
 @app.route('/get-last-model', methods=['GET'])
 def getLastModel():
     if(len(labels_dict)==0):
@@ -28,6 +33,50 @@ def getLastModel():
     else:
         last_key, last_value = labels_dict.popitem()
         return "{}".format(last_key+1)
+
+@app.route('/delete-model', methods=['POST'])
+def deleteModel():
+    if 'model_name' not in request.json:
+        return jsonify({'error': 'No model name selected'}), 400
+    for key, val in labels_dict.items():
+        if val["name"] == request.json["model_name"]:
+            model_rm = key
+            del labels_dict[key]
+            shutil.rmtree(os.path.join(DATA_DIR, str(model_rm)))
+            return 'success delete'
+        else:
+            return 'no model'
+
+@app.route('/update-model', methods=['PUT'])
+def updateModel():
+    if 'img' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+    if 'number_model' not in request.form:
+        return jsonify({'error': 'No model selected'}), 400
+    if 'model_name' not in request.form:
+        return jsonify({'error': 'No model name selected'}), 400
+    if 'action' not in request.form:
+        return jsonify({'error': 'No model name selected'}), 400
+    img = request.files['img']
+    model = int(request.form['number_model'])
+    name_model = request.form['model_name']
+    target = request.form['action'].split(' ')
+    action = target[0]
+    material = target[1]
+    labels_dict[model] = {
+        "name" : name_model,
+        "action": action,
+        "material": material
+    }
+    print(labels_dict)
+    if img.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+    for key, val in list(labels_dict.items()):
+        if key == model:
+            model_rm = key
+            del labels_dict[key]
+            shutil.rmtree(os.path.join(DATA_DIR, str(model_rm)))
+    return collect_imgs(img, model, img.filename)
 
 @app.route('/create-model', methods=['POST'])
 def createModel():
@@ -37,10 +86,19 @@ def createModel():
         return jsonify({'error': 'No model selected'}), 400
     if 'model_name' not in request.form:
         return jsonify({'error': 'No model name selected'}), 400
+    if 'action' not in request.form:
+        return jsonify({'error': 'No model name selected'}), 400
     img = request.files['img']
     model = int(request.form['number_model'])
     name_model = request.form['model_name']
-    labels_dict[model] = name_model
+    target = request.form['action'].split(' ')
+    action = target[0]
+    material = target[1]
+    labels_dict[model] = {
+        "name" : name_model,
+        "action": action,
+        "material": material
+    }
     if img.filename == '':
         return jsonify({'error': 'No selected file'}), 400
     return collect_imgs(img, model, img.filename)
@@ -160,7 +218,7 @@ def inference_classifier():
 
             prediction = model.predict([np.asarray(data_aux)])
             print(labels_dict)
-            predicted_character = labels_dict[int(prediction[0])]
+            predicted_character = labels_dict[int(prediction[0])]["name"]
             return predicted_character
     except Exception as e:
         return "None attributed"
