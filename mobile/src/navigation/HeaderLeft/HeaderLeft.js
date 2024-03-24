@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet } from "react-native";
 import CustomImage from "../../components/Common/CustomImage/CustomImage";
+import { Text } from "react-native-paper";
 
 const HeaderLeft = ({ navigation }) => {
   const handleGo = () => {
@@ -7,10 +8,9 @@ const HeaderLeft = ({ navigation }) => {
   };
   return (
     <Pressable style={styles.root} onPress={handleGo}>
-      <CustomImage
-        style={styles.logo}
-        source={require('../../images/logo-no-bg.png')}
-      />
+      <Text style={{fontSize: 19, fontWeight: "bold", marginTop: 20}}>
+        <Text style={{color: "#1777C7", fontWeight: "bold"}}>Smart</Text>Home
+      </Text>
     </Pressable>
   );
 };

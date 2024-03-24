@@ -108,9 +108,9 @@ export default function App() {
     setLoading(false);
   };
 
-  if (isLoading) {
-    return <CustomSplashScreen callBack={hideSplashScreen} />;
-  }
+  // if (isLoading) {
+  //   return <CustomSplashScreen callBack={hideSplashScreen} />;
+  // }
 
   return (
     <PaperProvider theme={theme}>

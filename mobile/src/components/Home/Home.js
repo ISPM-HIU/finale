@@ -4,10 +4,9 @@ import { StyleSheet } from "react-native";
 import { useTheme } from "react-native-paper";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Domotique from "./Domotique/Domotique";
-import Jarvis from "./Gesture/Gesture";
 import Gesture from "./Gesture/Gesture";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -29,7 +28,7 @@ const Home = () => {
         name="HomePage"
         component={Domotique}
         options={{
-          tabBarLabel: "My house",
+          tabBarLabel: "Ma maison",
           tabBarIcon: ({ color = white }) => (
             <AntDesign name="home" color={color} size={26} />
           ),
@@ -41,7 +40,7 @@ const Home = () => {
         options={{
           tabBarLabel: "Gestuelle",
           tabBarIcon: ({ color = white }) => (
-            <FontAwesome5 name="robot" color={color} size={26} />
+            <MaterialCommunityIcons name="gesture-pinch" color={color} size={26} />
           ),
         }}
       />
