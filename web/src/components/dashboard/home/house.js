@@ -201,7 +201,7 @@ export const House = ()=> {
 
     const getData = async () => {
       try {
-        let response = await http.get(`/house/${2}`)
+        let response = await http.get(`/house/${1}`)
         if(response) {
           setData(response.data)
           let res = response.data
