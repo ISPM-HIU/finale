@@ -34,9 +34,9 @@
   background-position: center center;
   max-height: 1200px;
 }
-.mtop{
+/* .mtop{
   margin-top: -8em;
-}
+} */
 h1 {
   font-family: "Playfair Display", serif;
   font-weight: 900;
@@ -311,7 +311,8 @@ span {
 }
 
 img {
-  width: 400px; /* Ajustez la taille de votre image selon vos besoins */
+  /* width: 400px;  */
+  width: 100%; /* Ajustez la taille de votre image selon vos besoins */
   animation: zoom-in-out 5s ease-in-out infinite;
 }
 .border-left-top {
@@ -334,4 +335,7 @@ h4{
   font-size: 1.5rem;
     color: #010f58;
     font-weight: 900;
+}
+.style-text{
+  margin-bottom: 10% !important;
 }

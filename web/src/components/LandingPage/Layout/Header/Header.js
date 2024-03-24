@@ -42,7 +42,7 @@ const Header = () => {
                 <Link >Avantages</Link>
               </li>
               <li>
-                <Link >Exploration 3D</Link>
+                <Link >Commencer</Link>
               </li>
               {/* <li>
                 <Link to="courses.html">Commandes gestuelles</Link>
