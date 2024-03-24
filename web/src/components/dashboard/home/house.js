@@ -165,7 +165,7 @@ function Bed({ position }) {
       <mesh position={position}>
         <sphereGeometry attach="geometry" args={[0.2, 16, 16]} />
         <meshStandardMaterial color="white" emissive="white" emissiveIntensity={1} />
-        <pointLight distance={10} intensity={data.led1 ? 100 : 50} />
+        <pointLight distance={10} intensity={data.led1 ? 100 : 10} />
       </mesh>
     );
   }
@@ -175,7 +175,7 @@ function Bed({ position }) {
       <mesh position={position}>
         <sphereGeometry attach="geometry" args={[0.2, 16, 16]} />
         <meshStandardMaterial color="white" emissive="white" emissiveIntensity={1} />
-        <pointLight distance={10} intensity={data.led2 ? 100 : 50} />
+        <pointLight distance={10} intensity={data.led2 ? 100 : 10} />
       </mesh>
     );
   }

@@ -48,7 +48,7 @@ export default function Router() {
         ></Route>
 
         <Route
-          path="/dashboard/assistant/configure"
+          path="/dashboard/materials"
           element={
               <Configure />
           }

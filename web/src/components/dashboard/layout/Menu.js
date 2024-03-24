@@ -8,13 +8,12 @@ export function Menu(props) {
     return <>
         <div className="position-relative">
             <div className="col-md-2 bg min-vh-100 p-2 pt-5 position-fixed">
-                <h2>Logo be</h2>
+                <h2 style={{color:"white"}}>SmartHome</h2>
                 <hr style={{color:"white"}}/>
                 <ul className="p-2">
                     <MenuComponent name={"Home"} icon={faHouse} href={"/dashboard"}/>
-                    <MenuComponent name={"Materials"} icon={faCouch} href={"/dashboard/assistant"}/>
+                    <MenuComponent name={"Materials"} icon={faCouch} href={"/dashboard/materials"}/>
                     <MenuComponent name={"Assistant"} icon={faUniversalAccess} href={"/dashboard/assistant"}/>
-                    <MenuComponent name={"House"} icon={faOdnoklassniki} href={"/dashboard/assistant"}/>
                     <MenuComponent name={"Consommation"} icon={faChartBar} href={"/dashboard/consumption"}/>
                 </ul>
             </div>
