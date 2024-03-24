@@ -62,7 +62,7 @@ export const Materials = ()=>{
           Durée: {data.duration1}
         </Card.Text>
         <Card.Text>
-          En kWH: {(6580 * (parseInt(data.duration1)/3600)).toFixed(2) || 0}
+          En kWH: {(6580 * (parseInt(data.duration1)/3600).toFixed(2)) || 0}
         </Card.Text>
       </Card.Body>
       <Card.Footer className="text-muted">
@@ -71,7 +71,7 @@ export const Materials = ()=>{
         <Form.Label>Prix du 1KWH: </Form.Label>
         <Form.Control type="number" value={number} onChange={(e)=>setNumber(e.target.value)} />
       </Form.Group>
-      <Card.Text>{(number * 6580 * (parseInt(data.duration1)/3600)).toFixed(2) || 0} Ar</Card.Text>
+      <Card.Text>{(number * 6580 * (parseInt(data.duration1)/3600).toFixed(2)) || 0} Ar</Card.Text>
     </Form>
       </Card.Footer>
     </Card>
@@ -92,7 +92,7 @@ export const Materials = ()=>{
         <Form.Label>Prix du 1KWH: </Form.Label>
         <Form.Control type="number" value={number2} onChange={(e)=>setNumber2(e.target.value)} />
       </Form.Group>
-      <Card.Text>{(number2 * 6580 * (parseInt(data.duration2)/3600)).toFixed(2) || 0} Ar</Card.Text>
+      <Card.Text>{(number2 * 6580 * (parseInt(data.duration2)/3600).toFixed(2)) || 0} Ar</Card.Text>
     </Form>
       </Card.Footer>
     </Card>

@@ -4,7 +4,7 @@ import { ConfigurableComp } from "./ConfigurableComp";
 import axios from "axios";
 
 export function Configure() {
-    const url_sign_hand = "http://135.125.191.198:5000";
+    const url_sign_hand = "http://localhost:5000";
 
     const [material, setMaterial] = useState([]);
 

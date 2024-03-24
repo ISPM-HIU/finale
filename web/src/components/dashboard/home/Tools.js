@@ -16,9 +16,9 @@ export function Tools() {
                 <Clock />
             </div>
 
-            <div className="bg minimal-rounded text-white fs-4 fw-bold p-2">
+            {/* <div className="bg minimal-rounded text-white fs-4 fw-bold p-2">
                 <Meteo/>
-            </div>
+            </div> */}
         </div>
 
     </div>

@@ -19,7 +19,7 @@ export function WebcamControl(props) {
     const [action, setAction] = useState("ouvrir")
     const [edit, setEdit] = useState(false)
     const [lengthLabel, setLengthLabel] = useState(0)
-
+    const [numModel, setNumModel] = useState(null)
     const frameLimit = 8;
     const modelDataLimit = 10;
     const url_sign_hand = "http://localhost:5000";
@@ -45,12 +45,7 @@ export function WebcamControl(props) {
     /**
      * Get length of the last model
      */
-    function getLengthLabel() {
-        axios.get(url_sign_hand + "/get-last-model")
-            .then(e => {
-                setLengthLabel(parseInt(e.data))
-            })
-    }
+    
 
     /**
      * Capture the image caught by the webcam and fetch the API data
@@ -102,7 +97,7 @@ export function WebcamControl(props) {
                         form_data = new FormData()
 
                     form_data.append('img', file)
-                    form_data.append('number_model', lengthLabel)
+                    form_data.append('number_model', numModel)
                     form_data.append('model_name', nameModel)
                     form_data.append('action', action + " " + material)
                     axios.post(url_sign_hand + "/create-model", form_data)
@@ -225,6 +220,10 @@ export function WebcamControl(props) {
                     display: "flex"
                 }} className="justify-content-center">
                     <div class="mb-2 col-md-3 mx-1">
+                        <input type="text" className="form-control" id="nameLabel" placeholder="Entrer le numero du modèle"
+                            value={numModel} onChange={(e) => { setNumModel(e.currentTarget.value) }} />
+                    </div>
+                    <div class="mb-2 col-md-3 mx-1">
                         <input type="text" className="form-control" id="nameLabel" placeholder="Entrer le nom du modèle"
                             value={nameModel} onChange={(e) => { setNameModel(e.currentTarget.value) }} />
                     </div>
@@ -272,9 +271,7 @@ export function WebcamControl(props) {
         }
     }
 
-    useEffect(() => {
-        getLengthLabel()
-    }, [webcamRef])
+    
 
     return (
         <>
