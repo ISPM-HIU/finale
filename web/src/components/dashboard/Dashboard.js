@@ -1,11 +1,13 @@
 import { Menu } from "./layout/Menu";
-import "../../styles/dashboard.css"
+import "../../styles/dashboard.css";
 import { Tools } from "./home/Tools";
 
-export function Dashboard(){
-    return (<>
-    <Menu>
-    <Tools/>
-    </Menu>
-    </>)
+export function Dashboard() {
+  return (
+    <>
+      <Menu>
+        <Tools />
+      </Menu>
+    </>
+  );
 }

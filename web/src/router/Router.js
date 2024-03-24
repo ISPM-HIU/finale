@@ -5,6 +5,7 @@ import { WebcamControl } from "../components/webcam/Webcam";
 import { Dashboard } from "../components/dashboard/Dashboard";
 import { Assistant } from "../components/dashboard/assistant/Assistant";
 import { Configure } from "../components/dashboard/assistant/configure/configure";
+import { Consumption } from "../components/consumption/Consumption";
 
 export default function Router() {
   return (
@@ -13,7 +14,12 @@ export default function Router() {
         <Route
           path="/"
           element={
-              <LandingPage />
+            <LandingPage />
+          }
+        ></Route>
+        <Route path="/webcam"
+          element={
+              <WebcamControl/>
           }
         ></Route>
         <Route
@@ -45,6 +51,12 @@ export default function Router() {
           path="/dashboard/assistant/configure"
           element={
               <Configure />
+          }
+        ></Route>
+        <Route
+          path="/dashboard/consumption"
+          element={
+              <Consumption/>
           }
         ></Route>
       </Routes>
