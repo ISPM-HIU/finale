@@ -3,7 +3,7 @@ import img from "../../../images/video-img.jpg";
 
 const VideoArea = () => {
   return (
-    <section className="video-area section-gap-bottom">
+    <section className="video-area section-gap-bottom" id="avantages">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-lg-4">

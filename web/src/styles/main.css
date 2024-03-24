@@ -227,7 +227,7 @@ h1 {
   color: #828bb2;
 }
 .img-fluid2 {
-  max-width: 20% !important;
+  max-width: 50% !important;
 }
 /* endFooter */
 
@@ -338,4 +338,8 @@ h4{
 }
 .style-text{
   margin-bottom: 10% !important;
+}
+
+.navbar-nav li a {
+  text-decoration: none;
 }

@@ -9,8 +9,8 @@ const Footer = () => {
     <footer className="footer-area section-gap">
       <div className="container">
         <div className="row">
-          <div className="col-lg-3 col-md-6 single-footer-widget">
-            <h4>Contactez-nous</h4>
+          <div className="col-lg-4 col-md-6 single-footer-widget">
+            {/* <h4>Contactez-nous</h4> */}
             <ul>
               {/* <li>
                 <a href="#">jarvis@gmail.com</a>
@@ -18,28 +18,28 @@ const Footer = () => {
 
             </ul>
           </div>
-          <div className="col-lg-6 col-md-6 single-footer-widget">
+          <div className="col-lg-4 col-md-6 single-footer-widget">
             <div className="row">
               <div className="d-flex justify-content-center col-md-4">
                 <img className="img-fluid2 border-left-top" src={watsap} alt="" width={"80%"} />
-                <span>
+                {/* <span>
                   <a href="#"> +1234567890</a>
-                </span>
+                </span> */}
               </div>
               <div className="d-flex justify-content-center col-md-4">
                 <img className="img-fluid2 border-left-top" src={facebook} alt="" width={"80%"} />
-                <span>
+                {/* <span>
                   <a href="#"> +1234567890</a>
-                </span>
+                </span> */}
               </div>
               <div className="d-flex justify-content-center col-md-4">
                 <img className="img-fluid2 border-left-top" src={mail} alt="" width={"80%"} />
-                <span>
+                {/* <span>
                     <a href="#">jarvis@gmail.com</a>
-                </span>
+                </span> */}
                 </div>
             </div>
-          <div className="col-lg-3">
+          <div className="col-lg-4">
           </div>
             
             {/* <ul>
